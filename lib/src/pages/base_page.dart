@@ -34,7 +34,10 @@ class _BasePageState extends State<BasePage> {
               pageController.jumpToPage(index);
             });
           },
+          type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.blue,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
