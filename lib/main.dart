@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/pages/base_page.dart';
-import 'package:futinfo/src/pages/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
