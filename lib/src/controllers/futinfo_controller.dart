@@ -20,6 +20,7 @@ class FutinfoController extends GetxController {
     super.onInit();
 
     getInfos();
+    repository.getAll();
   }
 
   getInfos() async {

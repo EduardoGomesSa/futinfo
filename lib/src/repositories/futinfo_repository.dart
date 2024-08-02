@@ -13,19 +13,19 @@ class FutinfoRepository {
   });
 
   Future getAll() async {
-    await dotenv.load();
+    //await dotenv.load();
 
-    const String endpoint = "${Url.base}";
+    const String endpoint = Url.base;
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.get,
       headers: {
-        'X-Auth-Token': dotenv.env['API_TOKEN'] ?? '',
+        'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
       },
     );
+    print('chamou o repository');
 
     if (response['data'] != null) {
-      print('chamou');
       print(response['data']);
       List list = response['data'];
 
