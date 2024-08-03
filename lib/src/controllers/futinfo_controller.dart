@@ -24,7 +24,6 @@ class FutinfoController extends GetxController {
   }
 
   getInfos() async {
-    print("entrou no controller");
     isLoading.value = true;
 
     var result = await repository.getAll();

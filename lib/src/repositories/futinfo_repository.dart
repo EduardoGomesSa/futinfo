@@ -23,10 +23,8 @@ class FutinfoRepository {
         'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
       },
     );
-    print('chamou o repository');
 
     if (response['data'] != null) {
-      print(response['data']);
       List list = response['data'];
 
       return Future.value();
