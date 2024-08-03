@@ -3,13 +3,13 @@ class CompetitionModel {
   final String? name;
   final String? code;
   final String? type;
-  final String? flag;
+  final String? emblem;
 
   CompetitionModel({
     required this.id,
     required this.name,
     required this.code,
     required this.type,
-    required this.flag,
+    required this.emblem,
   });
 }
