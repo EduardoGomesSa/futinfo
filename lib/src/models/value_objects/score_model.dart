@@ -24,8 +24,8 @@ class ScoreModel {
 }
 
 class FullTime {
-  final String? home;
-  final String? away;
+  final int? home;
+  final int? away;
 
   FullTime({
     required this.home,
@@ -34,8 +34,8 @@ class FullTime {
 
   factory FullTime.fromMap(Map<String, dynamic> map) {
     return FullTime(
-      home: map['home'] != null ? map['home'] as String : null,
-      away: map['away'] != null ? map['away'] as String : null,
+      home: map['home'] != null ? map['home'] as int : null,
+      away: map['away'] != null ? map['away'] as int : null,
     );
   }
 
@@ -48,8 +48,8 @@ class FullTime {
 }
 
 class HalfTime {
-  final String? home;
-  final String? away;
+  final int? home;
+  final int? away;
 
   HalfTime({
     required this.home,
@@ -58,8 +58,8 @@ class HalfTime {
 
   factory HalfTime.fromMap(Map<String, dynamic> map) {
     return HalfTime(
-      home: map['home'] != null ? map['home'] as String : null,
-      away: map['away'] != null ? map['away'] as String : null,
+      home: map['home'] != null ? map['home'] as int : null,
+      away: map['away'] != null ? map['away'] as int : null,
     );
   }
 

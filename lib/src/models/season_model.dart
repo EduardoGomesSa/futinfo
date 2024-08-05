@@ -18,11 +18,9 @@ class SeasonModel {
   factory SeasonModel.fromMap(Map<String, dynamic> map) {
     return SeasonModel(
       id: map['id'] != null ? map['id'] as int : null,
-      startDate: map['startDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['startDate'] as int)
-          : null,
+      startDate: map['startDate'] != null ? DateTime.parse(map['startDate']) : null,
       endDate: map['endDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['endDate'] as int)
+          ? DateTime.parse(map['endDate'])
           : null,
       currentMatchday:
           map['currentMatchday'] != null ? map['currentMatchday'] as int : null,

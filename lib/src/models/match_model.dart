@@ -29,14 +29,12 @@ class MatchModel {
   factory MatchModel.fromMap(Map<String, dynamic> map) {
     return MatchModel(
       id: map['id'] != null ? map['id'] as int : null,
-      utcDate: map['utcDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['utcDate'] as int)
-          : null,
+      utcDate: map['utcDate'] != null ? DateTime.parse(map['utcDate']) : null,
       status: map['status'] != null ? map['status'] as String : null,
       matchday: map['matchday'] != null ? map['matchday'] as int : null,
       stage: map['stage'] != null ? map['stage'] as String : null,
       lastUpdated: map['lastUpdated'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['lastUpdated'] as int)
+          ? DateTime.parse(map['lastUpdated'])
           : null,
       homeTeam: map['homeTeam'] != null
           ? TeamModel.fromMap(map['homeTeam'] as Map<String, dynamic>)
