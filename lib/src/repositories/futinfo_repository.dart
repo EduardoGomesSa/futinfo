@@ -27,22 +27,17 @@ class FutinfoRepository {
       },
     );
 
-    //final jsonData = RoundModel.convertMap(response);
+    if (response['matches'] != null) {
+      var round = RoundModel.fromMap(RoundModel.convertMap(response));
 
-    //print("Json convertido AQUI --> $jsonData");
-
-    var round = RoundModel.fromMap(RoundModel.convertMap(response));
-    // var round = RoundModel.fromJson(response.toString());
-
-    print("Quantidade de jogos -> ${round.matches!.length}");
-
-    if (response['data'] != null) {
-      List list = response['data'];
+      print("Entrou no IF -> ${response['message']}");
 
       return Future.value();
     } else {
       String message = response['error'] ??
           "Não foi possível buscar as informações. Tente novamente!";
+
+      print("Erro -> ${response['message']}");
 
       return Future.value();
     }
