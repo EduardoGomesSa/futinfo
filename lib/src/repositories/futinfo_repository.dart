@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:futinfo/src/core/services/http_manager.dart';
 import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
