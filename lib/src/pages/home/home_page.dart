@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
+import 'package:futinfo/src/core/widgets/match_widget.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,13 +27,23 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              return ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: controller.round.matches!.length,
-                itemBuilder: (_, index) {
-                  return Text(
-                      "${controller.round.matches![index].homeTeam!.name} x ${controller.round.matches![index].awayTeam!.name}");
-                },
+              return Column(
+                children: [
+                  Text(
+                    controller.round.competition!.name!,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: controller.round.matches!.length,
+                      itemBuilder: (_, index) {
+                        return MatchWidget(
+                            model: controller.round.matches![index]);
+                      },
+                    ),
+                  ),
+                ],
               );
             }
           },
