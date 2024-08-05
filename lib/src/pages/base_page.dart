@@ -20,7 +20,7 @@ class _BasePageState extends State<BasePage> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: [
-            const HomePage(),
+            HomePage(),
             Container(
               color: Colors.red,
             )
