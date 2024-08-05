@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
+import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
+import 'package:futinfo/src/models/round_model.dart';
 import 'package:futinfo/src/repositories/futinfo_repository.dart';
 import 'package:get/get.dart';
 
@@ -14,18 +16,26 @@ class FutinfoController extends GetxController {
   });
 
   RxBool isLoading = false.obs;
+  RoundModel round = RoundModel();
 
   @override
   void onInit() {
     super.onInit();
 
-    getInfos();
-    repository.getAllRounds();
+    getAllRounds();
   }
 
-  getInfos() async {
+  getAllRounds() async {
     isLoading.value = true;
 
-    var result = await repository.getAllRounds();
+    ApiResult<RoundModel> result = await repository.getAllRounds();
+
+    if (!result.isError) {
+      round = result.data!;
+    } else {
+      appUtils.showToast(message: result.message!, isError: true);
+    }
+
+    isLoading.value = false;
   }
 }
