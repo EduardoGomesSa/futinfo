@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:futinfo/src/core/services/http_manager.dart';
+import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/core/utils/urls.dart';
 import 'package:futinfo/src/models/round_model.dart';
@@ -15,7 +16,7 @@ class FutinfoRepository {
     required this.appUtils,
   });
 
-  Future getAll() async {
+  Future<ApiResult<RoundModel>> getAllRounds() async {
     //await dotenv.load();
 
     const String endpoint = Url.matches;
@@ -28,18 +29,14 @@ class FutinfoRepository {
     );
 
     if (response['matches'] != null) {
-      var round = RoundModel.fromMap(RoundModel.convertMap(response));
+      var rounds = RoundModel.fromMap(RoundModel.convertMap(response));
 
-      print("Entrou no IF -> ${response['message']}");
-
-      return Future.value();
+      return ApiResult<RoundModel>(data: rounds);
     } else {
-      String message = response['error'] ??
-          "Não foi possível buscar as informações. Tente novamente!";
-
-      print("Erro -> ${response['message']}");
-
-      return Future.value();
+      return ApiResult<RoundModel>(
+        message: "Erro ao buscar as rodadas de jogos. Tente novamente!",
+        isError: true,
+      );
     }
   }
 }

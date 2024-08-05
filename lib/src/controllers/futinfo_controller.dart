@@ -20,12 +20,12 @@ class FutinfoController extends GetxController {
     super.onInit();
 
     getInfos();
-    repository.getAll();
+    repository.getAllRounds();
   }
 
   getInfos() async {
     isLoading.value = true;
 
-    var result = await repository.getAll();
+    var result = await repository.getAllRounds();
   }
 }
