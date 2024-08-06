@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/models/match_model.dart';
 
 class MatchWidget extends StatelessWidget {
-  const MatchWidget({
+  MatchWidget({
     super.key,
     required this.model,
   });
 
   final MatchModel model;
+  final appUltils = AppUtils();
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,8 @@ class MatchWidget extends StatelessWidget {
       color: Colors.pink,
       child: Column(
         children: [
-          Text("Data: ${model.utcDate}"),
-          // Text(
-          //     "${model.homeTeam!.shortName} - ${model.score!.fullTime!.home} x ${model.score!.fullTime!.away} - ${model.awayTeam!.shortName}"),
+          Text(appUltils.formatDateTimeHour(model.utcDate!)),
+          Text(appUltils.formatDateTime(model.utcDate!)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -28,11 +29,15 @@ class MatchWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Text("${model.homeTeam!.tla} "),
               const SizedBox(width: 8),
-              model.score!.fullTime!.home != null ? Text(model.score!.fullTime!.home.toString()) : const Text(" -"),
+              model.score!.fullTime!.home != null
+                  ? Text(model.score!.fullTime!.home.toString())
+                  : const Text(" -"),
               const SizedBox(width: 8),
               const Text(" X "),
               const SizedBox(width: 8),
-              model.score!.fullTime!.away != null ? Text(model.score!.fullTime!.away.toString()) : const Text("- "),
+              model.score!.fullTime!.away != null
+                  ? Text(model.score!.fullTime!.away.toString())
+                  : const Text("- "),
               const SizedBox(width: 8),
               Text(" ${model.awayTeam!.tla!}"),
               const SizedBox(width: 8),

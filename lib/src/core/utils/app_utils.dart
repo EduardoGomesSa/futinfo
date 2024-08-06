@@ -26,7 +26,15 @@ class AppUtils {
   String formatDateTime(DateTime dateTime) {
     initializeDateFormatting();
 
-    DateFormat dateFormat = DateFormat.yMd('pt_BR').add_Hm();
+    DateFormat dateFormat = DateFormat.yMd('pt_BR');
+
+    return dateFormat.format(dateTime);
+  }
+
+  String formatDateTimeHour(DateTime dateTime) {
+    initializeDateFormatting();
+
+    DateFormat dateFormat = DateFormat.Hm('pt_BR');
     return dateFormat.format(dateTime);
   }
 
