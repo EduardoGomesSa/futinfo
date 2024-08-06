@@ -12,6 +12,7 @@ class MatchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.pink,
       child: Column(
         children: [
           Text("Data: ${model.utcDate}"),
@@ -24,9 +25,17 @@ class MatchWidget extends StatelessWidget {
                 backgroundImage: NetworkImage(model.homeTeam!.crest!),
                 radius: 15,
               ),
-              Text(model.homeTeam!.shortName!),
-              const Text("X"),
-              Text(model.awayTeam!.shortName!),
+              const SizedBox(width: 8),
+              Text("${model.homeTeam!.tla} "),
+              const SizedBox(width: 8),
+              Text(model.score!.fullTime!.home.toString()),
+              const SizedBox(width: 8),
+              const Text(" X "),
+              const SizedBox(width: 8),
+              Text(model.score!.fullTime!.away.toString()),
+              const SizedBox(width: 8),
+              Text(" ${model.awayTeam!.tla!}"),
+              const SizedBox(width: 8),
               CircleAvatar(
                 backgroundImage: NetworkImage(model.awayTeam!.crest!),
                 radius: 15,
