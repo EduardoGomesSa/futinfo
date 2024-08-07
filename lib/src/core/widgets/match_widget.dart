@@ -23,41 +23,48 @@ class MatchWidget extends StatelessWidget {
           ),
         );
       },
-      child: Card(
-        color: Colors.pink,
-        child: Column(
-          children: [
-            Text(appUltils.formatDateTimeHour(model.utcDate!)),
-            Text(appUltils.formatDateTime(model.utcDate!)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
+        child: Card(
+          color: Colors.white.withAlpha(100),
+          child: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+            
+            child: Column(
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(model.homeTeam!.crest!),
-                  radius: 15,
-                ),
-                const SizedBox(width: 8),
-                Text("${model.homeTeam!.tla} "),
-                const SizedBox(width: 8),
-                model.score!.fullTime!.home != null
-                    ? Text(model.score!.fullTime!.home.toString())
-                    : const Text(" -"),
-                const SizedBox(width: 8),
-                const Text(" X "),
-                const SizedBox(width: 8),
-                model.score!.fullTime!.away != null
-                    ? Text(model.score!.fullTime!.away.toString())
-                    : const Text("- "),
-                const SizedBox(width: 8),
-                Text(" ${model.awayTeam!.tla!}"),
-                const SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundImage: NetworkImage(model.awayTeam!.crest!),
-                  radius: 15,
-                ),
+                Text(appUltils.formatDateTimeHour(model.utcDate!)),
+                Text(appUltils.formatDateTime(model.utcDate!)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(model.homeTeam!.crest!),
+                      radius: 15,
+                    ),
+                    const SizedBox(width: 8),
+                    Text("${model.homeTeam!.tla} "),
+                    const SizedBox(width: 8),
+                    model.score!.fullTime!.home != null
+                        ? Text(model.score!.fullTime!.home.toString())
+                        : const Text(" -"),
+                    const SizedBox(width: 8),
+                    const Text(" X "),
+                    const SizedBox(width: 8),
+                    model.score!.fullTime!.away != null
+                        ? Text(model.score!.fullTime!.away.toString())
+                        : const Text("- "),
+                    const SizedBox(width: 8),
+                    Text(" ${model.awayTeam!.tla!}"),
+                    const SizedBox(width: 8),
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(model.awayTeam!.crest!),
+                      radius: 15,
+                    ),
+                  ],
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );

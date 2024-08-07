@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
         appBarTheme: const AppBarTheme(backgroundColor: Colors.blue)
       ),
+      debugShowCheckedModeBanner: false,
       initialBinding: FutinfoBinding(),
       home: const BasePage(),
     );

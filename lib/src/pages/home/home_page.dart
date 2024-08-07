@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
