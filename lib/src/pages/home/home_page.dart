@@ -12,6 +12,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentRoundMatches = controller.round.matches!
+        .where((match) =>
+            match.matchday == controller.round.season!.currentMatchday)
+        .toList();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -36,10 +40,10 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
-                      itemCount: controller.round.matches!.length,
+                      itemCount: currentRoundMatches.length,
                       itemBuilder: (_, index) {
                         return MatchWidget(
-                            model: controller.round.matches![index]);
+                            model: currentRoundMatches[index]);
                       },
                     ),
                   ),
