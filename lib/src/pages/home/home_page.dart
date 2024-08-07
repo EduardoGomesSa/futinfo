@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
+import 'package:futinfo/src/models/match_model.dart';
+import 'package:futinfo/src/models/round_model.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,12 +12,16 @@ class HomePage extends StatelessWidget {
       GlobalKey<RefreshIndicatorState>();
   final FutinfoController controller = Get.find();
 
+  List<MatchModel> getMatchesForRound(RoundModel round, [int? roundNumber]) {
+    int targetRound = roundNumber ?? round.season!.currentMatchday!;
+
+    return round.matches!
+        .where((match) => match.matchday == targetRound)
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentRoundMatches = controller.round.matches!
-        .where((match) =>
-            match.matchday == controller.round.season!.currentMatchday)
-        .toList();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -31,6 +37,7 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
+              final currentRoundMatches = getMatchesForRound(controller.round, 6);
               return Column(
                 children: [
                   Text(
@@ -42,8 +49,7 @@ class HomePage extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       itemCount: currentRoundMatches.length,
                       itemBuilder: (_, index) {
-                        return MatchWidget(
-                            model: currentRoundMatches[index]);
+                        return MatchWidget(model: currentRoundMatches[index]);
                       },
                     ),
                   ),
