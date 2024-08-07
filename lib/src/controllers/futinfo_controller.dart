@@ -15,6 +15,7 @@ class FutinfoController extends GetxController {
 
   RxBool isLoading = false.obs;
   RoundModel round = RoundModel();
+  var selectedRound = 1.obs;
 
   @override
   void onInit() {
@@ -30,6 +31,7 @@ class FutinfoController extends GetxController {
 
     if (!result.isError) {
       round = result.data!;
+      selectedRound.value = round.season!.currentMatchday!;
     } else {
       appUtils.showToast(message: result.message!, isError: true);
     }

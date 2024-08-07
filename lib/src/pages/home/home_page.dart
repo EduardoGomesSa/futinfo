@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
@@ -25,6 +27,23 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          PopupMenuButton<int>(
+              icon: const Icon(Icons.list),
+              onSelected: (selectedRound) {
+                controller.selectedRound.value = selectedRound;
+              },
+              itemBuilder: (BuildContext context) {
+                return List.generate(38, (index) => index + 1)
+                    .map(
+                      (round) => PopupMenuItem(
+                        value: round,
+                        child: Text('Rodada $round'),
+                      ),
+                    )
+                    .toList();
+              })
+        ],
       ),
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
@@ -37,7 +56,8 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              final currentRoundMatches = getMatchesForRound(controller.round, 6);
+              final currentRoundMatches =
+                  getMatchesForRound(controller.round, controller.selectedRound.value);
               return Column(
                 children: [
                   Text(
