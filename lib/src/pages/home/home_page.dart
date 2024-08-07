@@ -54,8 +54,8 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              final currentRoundMatches =
-                  getMatchesForRound(controller.round, controller.selectedRound.value);
+              final currentRoundMatches = getMatchesForRound(
+                  controller.round, controller.selectedRound.value);
               return Column(
                 children: [
                   Text(
@@ -67,6 +67,14 @@ class HomePage extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       itemCount: currentRoundMatches.length,
                       itemBuilder: (_, index) {
+                        if (index == 0) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Text("Rodada ${controller.selectedRound.value}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                            ),
+                          );
+                        }
                         return MatchWidget(model: currentRoundMatches[index]);
                       },
                     ),
