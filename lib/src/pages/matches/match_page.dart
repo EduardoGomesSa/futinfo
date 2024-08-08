@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
+import 'package:futinfo/src/core/widgets/logo_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
 
 class MatchPage extends StatelessWidget {
@@ -33,11 +34,7 @@ class MatchPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(model.homeTeam!.crest!),
-                            radius: 15,
-                          ),
+                          LogoWidget(model: model.homeTeam!),
                           const SizedBox(width: 8),
                           Text("${model.homeTeam!.tla} "),
                           const SizedBox(width: 8),
@@ -53,11 +50,7 @@ class MatchPage extends StatelessWidget {
                           const SizedBox(width: 8),
                           Text(" ${model.awayTeam!.tla!}"),
                           const SizedBox(width: 8),
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(model.awayTeam!.crest!),
-                            radius: 15,
-                          ),
+                          LogoWidget(model: model.awayTeam!),
                         ],
                       )
                     ],
@@ -82,11 +75,7 @@ class MatchPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(model.homeTeam!.crest!),
-                            radius: 15,
-                          ),
+                          LogoWidget(model: model.homeTeam!),
                           const SizedBox(width: 8),
                           Text("${model.homeTeam!.tla} "),
                           const SizedBox(width: 8),
@@ -102,11 +91,7 @@ class MatchPage extends StatelessWidget {
                           const SizedBox(width: 8),
                           Text(" ${model.awayTeam!.tla!}"),
                           const SizedBox(width: 8),
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(model.awayTeam!.crest!),
-                            radius: 15,
-                          ),
+                          LogoWidget(model: model.awayTeam!),
                         ],
                       )
                     ],
@@ -127,11 +112,7 @@ class MatchPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(model.homeTeam!.crest!),
-                            radius: 15,
-                          ),
+                          LogoWidget(model: model.homeTeam!),
                           const SizedBox(width: 8),
                           Text("${model.homeTeam!.tla} "),
                           const SizedBox(width: 8),
@@ -147,11 +128,7 @@ class MatchPage extends StatelessWidget {
                           const SizedBox(width: 8),
                           Text(" ${model.awayTeam!.tla!}"),
                           const SizedBox(width: 8),
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(model.awayTeam!.crest!),
-                            radius: 15,
-                          ),
+                          LogoWidget(model: model.awayTeam!),
                         ],
                       )
                     ],

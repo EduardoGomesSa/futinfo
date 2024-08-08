@@ -56,10 +56,7 @@ class MatchWidget extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(" ${model.awayTeam!.tla!}"),
                     const SizedBox(width: 8),
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(model.awayTeam!.crest!),
-                      radius: 15,
-                    ),
+                    LogoWidget(model: model.awayTeam!),
                   ],
                 )
               ],
