@@ -3,6 +3,7 @@ import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/core/utils/urls.dart';
 import 'package:futinfo/src/models/round_model.dart';
+import 'package:futinfo/src/models/table_model.dart';
 
 class FutinfoRepository {
   final HttpManager httpManager;
@@ -26,7 +27,7 @@ class FutinfoRepository {
     );
 
     if (response['matches'] != null) {
-      var rounds = RoundModel.fromMap(RoundModel.convertMap(response));
+      var rounds = RoundModel.fromMap(convertMap(response));
 
       return ApiResult<RoundModel>(data: rounds);
     } else {
@@ -35,5 +36,31 @@ class FutinfoRepository {
         isError: true,
       );
     }
+  }
+
+  Future<ApiResult<TableModel>> getTableLeague() async {
+    const String endpoint = Url.leagueTable;
+    final response = await httpManager
+        .request(url: endpoint, method: HttpMethods.get, headers: {
+      'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+    });
+
+    if (response['standings'] != null) {
+      // var table = TableModel.fromMap(convertMap(response['standings'] as Map<dynamic, dynamic>));
+      var table = TableModel.fromMap(response['standings'][0]);
+
+      print(table.teamsTable);
+
+      return ApiResult<TableModel>(data: table);
+    } else {
+      return ApiResult<TableModel>(
+        isError: true,
+        message: "Erro ao buscar a tabela de classificação. Tente novamente",
+      );
+    }
+  }
+
+  static Map<String, dynamic> convertMap(Map<dynamic, dynamic> originalMap) {
+    return originalMap.map((key, value) => MapEntry(key.toString(), value));
   }
 }

@@ -43,8 +43,4 @@ class RoundModel {
   static List<RoundModel> fromList(list) {
     return List<RoundModel>.from(list.map((x) => RoundModel.fromMap(x)));
   }
-
-  static Map<String, dynamic> convertMap(Map<dynamic, dynamic> originalMap) {
-      return originalMap.map((key, value) => MapEntry(key.toString(), value));
-    }
 }

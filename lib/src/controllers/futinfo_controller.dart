@@ -21,6 +21,8 @@ class FutinfoController extends GetxController {
   void onInit() {
     super.onInit();
 
+    repository.getTableLeague();
+
     getAllRounds();
   }
 
