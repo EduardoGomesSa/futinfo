@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const TablePage()));
+                    MaterialPageRoute(builder: (context) => TablePage()));
               },
               icon: const Icon(Icons.radar)),
           PopupMenuButton<int>(
