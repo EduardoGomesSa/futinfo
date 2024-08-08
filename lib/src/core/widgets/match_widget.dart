@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
+import 'package:futinfo/src/core/widgets/logo_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
+import 'package:futinfo/src/models/team_model.dart';
 import 'package:futinfo/src/pages/matches/match_page.dart';
+import 'package:futinfo/src/pages/teams/team_page.dart';
 
 class MatchWidget extends StatelessWidget {
   MatchWidget({
@@ -28,8 +31,8 @@ class MatchWidget extends StatelessWidget {
         child: Card(
           color: Colors.white.withAlpha(100),
           child: Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
-            
+            margin:
+                const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: Column(
               children: [
                 Text(appUltils.formatDateTimeHour(model.utcDate!)),
@@ -37,10 +40,7 @@ class MatchWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(model.homeTeam!.crest!),
-                      radius: 15,
-                    ),
+                    LogoWidget(model: model.homeTeam!),
                     const SizedBox(width: 8),
                     Text("${model.homeTeam!.tla} "),
                     const SizedBox(width: 8),
