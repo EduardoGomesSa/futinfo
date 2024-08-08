@@ -3,6 +3,7 @@ import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
 import 'package:futinfo/src/models/round_model.dart';
+import 'package:futinfo/src/pages/home/table_page.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,6 +27,12 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
         actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const TablePage()));
+              },
+              icon: const Icon(Icons.radar)),
           PopupMenuButton<int>(
               icon: const Icon(Icons.list),
               onSelected: (selectedRound) {
@@ -71,7 +78,11 @@ class HomePage extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
-                              child: Text("Rodada ${controller.selectedRound.value}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                              child: Text(
+                                "Rodada ${controller.selectedRound.value}",
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
                             ),
                           );
                         }

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/core/widgets/logo_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
-import 'package:futinfo/src/models/team_model.dart';
 import 'package:futinfo/src/pages/matches/match_page.dart';
-import 'package:futinfo/src/pages/teams/team_page.dart';
 
 class MatchWidget extends StatelessWidget {
   MatchWidget({
