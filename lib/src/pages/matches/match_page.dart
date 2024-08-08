@@ -66,11 +66,11 @@ class MatchPage extends StatelessWidget {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(top: 10),
               child: Text("Placar"),
             ),
             Padding(
-              padding: const EdgeInsets.all(0),
+              padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
               child: Card(
                 color: Colors.white.withAlpha(100),
                 child: Container(
