@@ -13,7 +13,13 @@ class TeamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.shortName!),
+        title: Row(children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: CircleAvatar(backgroundImage: NetworkImage(model.crest!),radius: 15,),
+          ),
+          Text(model.shortName!)
+        ],),
       ),
     );
   }
