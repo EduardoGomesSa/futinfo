@@ -10,6 +10,10 @@ class TablePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.getTableLeague();
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tabela Brasileirão"),
@@ -26,7 +30,15 @@ class TablePage extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else {
-                final table = controller.table;
+                final table = controller.table.value;
+
+                if (table == null ||
+                    table.teamsTable == null ||
+                    table.teamsTable!.isEmpty) {
+                  return const Center(
+                    child: Text("Nenhuma tabela disponível"),
+                  );
+                }
                 return DataTable(
                   columnSpacing: 10.5,
                   columns: const [
@@ -42,11 +54,9 @@ class TablePage extends StatelessWidget {
                     DataColumn(label: Text('SG')),
                   ],
                   rows: List.generate(
-                    controller.table.teamsTable!.length,
-                    (index) => DataRow(
-                      cells: [
-                      DataCell(
-                          Text("${table.teamsTable![index].position}°")),
+                    table!.teamsTable!.length,
+                    (index) => DataRow(cells: [
+                      DataCell(Text("${table.teamsTable![index].position}°")),
                       DataCell(Row(
                         children: [
                           LogoWidget(

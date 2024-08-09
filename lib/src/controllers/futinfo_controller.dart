@@ -17,7 +17,7 @@ class FutinfoController extends GetxController {
 
   RxBool isLoading = false.obs;
   RoundModel round = RoundModel();
-  TableModel table = TableModel();
+  var table = Rx<TableModel?>(null);
   var selectedRound = 1.obs;
 
   @override
@@ -25,7 +25,6 @@ class FutinfoController extends GetxController {
     super.onInit();
 
     getAllRounds();
-    getTableLeague();
   }
 
   getAllRounds() async {
@@ -49,7 +48,7 @@ class FutinfoController extends GetxController {
     ApiResult<TableModel> result = await repository.getTableLeague();
 
     if (!result.isError) {
-      table = result.data!;
+      table.value = result.data!;
     } else {
       appUtils.showToast(message: result.message!, isError: true);
     }
