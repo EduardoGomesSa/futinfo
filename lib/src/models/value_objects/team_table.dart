@@ -3,7 +3,7 @@ import 'package:futinfo/src/models/team_model.dart';
 class TeamTable {
   int? position;
   TeamModel? team;
-  int? playGames;
+  int? playedGames;
   int? won;
   int? draw;
   int? lost;
@@ -15,7 +15,7 @@ class TeamTable {
   TeamTable({
     this.position,
     this.team,
-    this.playGames,
+    this.playedGames,
     this.won,
     this.draw,
     this.lost,
@@ -29,7 +29,7 @@ class TeamTable {
     return TeamTable(
       position: map['position'] != null ? map['position'] as int : null,
       team: map['team'] != null ? TeamModel.fromMap(map['team'] as Map<String, dynamic>) : null,
-      playGames: map['playGames'] != null ? map['playGames'] as int : null,
+      playedGames: map['playedGames'] != null ? map['playedGames'] as int : null,
       won: map['won'] != null ? map['won'] as int : null,
       draw: map['draw'] != null ? map['draw'] as int : null,
       lost: map['lost'] != null ? map['lost'] as int : null,

@@ -28,10 +28,11 @@ class TablePage extends StatelessWidget {
               } else {
                 final table = controller.table;
                 return DataTable(
+                  columnSpacing: 10.5,
                   columns: const [
                     DataColumn(label: Text('Pos')),
                     DataColumn(label: Text('Time')),
-                    DataColumn(label: Text('P')),
+                    DataColumn(label: Text('Pts')),
                     DataColumn(label: Text('J')),
                     DataColumn(label: Text('V')),
                     DataColumn(label: Text('E')),
@@ -42,9 +43,10 @@ class TablePage extends StatelessWidget {
                   ],
                   rows: List.generate(
                     controller.table.teamsTable!.length,
-                    (index) => DataRow(cells: [
+                    (index) => DataRow(
+                      cells: [
                       DataCell(
-                          Text(table.teamsTable![index].position.toString())),
+                          Text("${table.teamsTable![index].position}°")),
                       DataCell(Row(
                         children: [
                           LogoWidget(
@@ -59,8 +61,8 @@ class TablePage extends StatelessWidget {
                       )),
                       DataCell(
                           Text(table.teamsTable![index].points.toString())),
-                      DataCell(
-                          Text(table.teamsTable![index].playGames.toString())),
+                      DataCell(Text(
+                          table.teamsTable![index].playedGames.toString())),
                       DataCell(Text(table.teamsTable![index].won.toString())),
                       DataCell(Text(table.teamsTable![index].draw.toString())),
                       DataCell(Text(table.teamsTable![index].lost.toString())),
