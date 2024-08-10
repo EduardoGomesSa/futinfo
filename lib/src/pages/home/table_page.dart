@@ -54,7 +54,7 @@ class TablePage extends StatelessWidget {
                     DataColumn(label: Text('SG')),
                   ],
                   rows: List.generate(
-                    table!.teamsTable!.length,
+                    table.teamsTable!.length,
                     (index) => DataRow(cells: [
                       DataCell(Text("${table.teamsTable![index].position}°")),
                       DataCell(Row(

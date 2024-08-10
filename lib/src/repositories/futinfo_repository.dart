@@ -46,10 +46,7 @@ class FutinfoRepository {
     });
 
     if (response['standings'] != null) {
-      // var table = TableModel.fromMap(convertMap(response['standings'] as Map<dynamic, dynamic>));
       var table = TableModel.fromMap(response['standings'][0]);
-
-      print(table.teamsTable);
 
       return ApiResult<TableModel>(data: table);
     } else {
