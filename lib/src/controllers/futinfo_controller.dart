@@ -20,6 +20,7 @@ class FutinfoController extends GetxController {
   var table = Rx<TableModel?>(null);
   var selectedRound = 1.obs;
   TeamModel team = TeamModel();
+  var showMatches = true.obs;
 
   @override
   void onInit() {
@@ -70,5 +71,9 @@ class FutinfoController extends GetxController {
     }
 
     isLoading.value = false;
+  }
+
+  void toggleView() {
+    showMatches.value = !showMatches.value;
   }
 }

@@ -73,8 +73,6 @@ class FutinfoRepository {
 
     if (response['matches'] != null) {
       var teamWithGames = team.fromListMatches(convertMap(response));
-      // print('Count Jogos');
-      // print(teamWithGames.matches!.length);
 
       return ApiResult<TeamModel>(data: teamWithGames);
     } else {

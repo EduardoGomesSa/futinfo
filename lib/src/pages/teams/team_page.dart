@@ -48,21 +48,43 @@ class TeamPage extends StatelessWidget {
             }
             return Column(
               children: [
-                const Text("Jogos do Time"),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: teamGames.matches!.length,
-                    itemBuilder: (_, index) {
-                      //return Text("aaaaa");
-                      return MatchWidget(model: teamGames.matches![index]);
-                    },
-                  ),
+                ElevatedButton(
+                  onPressed: controller.toggleView,
+                  child: Text(controller.showMatches.value
+                      ? 'Ver elenco'
+                      : 'Ver jogos'),
                 ),
+                const Text("Jogos do Time"),
+                Expanded(child: Obx(() {
+                  return controller.showMatches.value
+                      ? _buildMatchesList(teamGames)
+                      : _buildPlayersList();
+                })),
               ],
             );
           }
         },
       ),
+    );
+  }
+
+  Widget _buildMatchesList(TeamModel teamGames) {
+    return ListView.builder(
+      itemCount: teamGames.matches!.length,
+      itemBuilder: (_, index) {
+        //return Text("aaaaa");
+        return MatchWidget(model: teamGames.matches![index]);
+      },
+    );
+  }
+
+  Widget _buildPlayersList() {
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (_, index) {
+        //return Text("aaaaa");
+        return Text("Jogador $index");
+      },
     );
   }
 }
