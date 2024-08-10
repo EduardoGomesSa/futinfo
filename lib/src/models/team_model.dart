@@ -4,18 +4,18 @@ import 'package:futinfo/src/models/match_model.dart';
 
 class TeamModel {
   int? id;
-   String? name;
-   String? shortName;
-   String? tla;
-   String? crest;
+  String? name;
+  String? shortName;
+  String? tla;
+  String? crest;
   List<MatchModel>? matches;
 
   TeamModel({
     this.id,
     this.name,
     this.shortName,
-     this.tla,
-     this.crest,
+    this.tla,
+    this.crest,
     this.matches,
   });
 
@@ -29,10 +29,15 @@ class TeamModel {
     );
   }
 
-  factory TeamModel.fromListMatches(Map<String, dynamic> map){
+  TeamModel fromListMatches(Map<String, dynamic> map) {
     return TeamModel(
-      matches: null
-    );
+        matches: map['matches'] != null
+            ? List<MatchModel>.from(
+                (map['matches'] as List<dynamic>).map<MatchModel?>(
+                  (x) => MatchModel.fromMap(x as Map<String, dynamic>),
+                ),
+              )
+            : null);
   }
 
   factory TeamModel.fromJson(String source) =>
