@@ -1,18 +1,22 @@
 import 'dart:convert';
 
+import 'package:futinfo/src/models/match_model.dart';
+
 class TeamModel {
-  final int? id;
-  final String? name;
-  final String? shortName;
-  final String? tla;
-  final String? crest;
+  int? id;
+   String? name;
+   String? shortName;
+   String? tla;
+   String? crest;
+  List<MatchModel>? matches;
 
   TeamModel({
-    required this.id,
-    required this.name,
-    required this.shortName,
-    required this.tla,
-    required this.crest,
+    this.id,
+    this.name,
+    this.shortName,
+     this.tla,
+     this.crest,
+    this.matches,
   });
 
   factory TeamModel.fromMap(Map<String, dynamic> map) {
@@ -22,6 +26,12 @@ class TeamModel {
       shortName: map['shortName'] != null ? map['shortName'] as String : null,
       tla: map['tla'] != null ? map['tla'] as String : null,
       crest: map['crest'] != null ? map['crest'] as String : null,
+    );
+  }
+
+  factory TeamModel.fromListMatches(Map<String, dynamic> map){
+    return TeamModel(
+      matches: null
     );
   }
 
