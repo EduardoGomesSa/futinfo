@@ -62,7 +62,8 @@ class FutinfoRepository {
   }
 
   Future<ApiResult<TeamModel>> getTeamGames(TeamModel team) async {
-    String endpoint = "${Url.teamMatches}/${team.id}/matches?dateFrom=2024-04-14&dateTo=2024-05-08";
+    String endpoint =
+        "${Url.teamMatches}/${team.id}/matches?dateFrom=2024-04-14&dateTo=2024-05-08";
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.get,
@@ -79,6 +80,24 @@ class FutinfoRepository {
       return ApiResult<TeamModel>(
           message: "Erro ao buscar jogos desse time. Tente novamente!",
           isError: true);
+    }
+  }
+
+  Future<ApiResult<TeamModel>> getPlayers(TeamModel team) async {
+    String endpoint = "${Url.teamPlayers}/${team.id}";
+
+    final response = await httpManager
+        .request(url: endpoint, method: HttpMethods.get, headers: {
+      'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+    });
+
+    if (response['squad'] != null) {
+      var teamWithPlayers = team.fromListPlayers(convertMap(response));
+
+      return ApiResult<TeamModel>(data: teamWithPlayers);
+    } else {
+      return ApiResult<TeamModel>(
+          message: 'Erro ao buscar jogadores do time. Tente novamente!', isError: true);
     }
   }
 
