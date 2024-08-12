@@ -1,6 +1,6 @@
-import 'dart:convert';
-
+import 'package:futinfo/src/models/coach_model.dart';
 import 'package:futinfo/src/models/match_model.dart';
+import 'package:futinfo/src/models/player_model.dart';
 
 class TeamModel {
   int? id;
@@ -8,7 +8,9 @@ class TeamModel {
   String? shortName;
   String? tla;
   String? crest;
+  CoachModel? coach;
   List<MatchModel>? matches;
+  List<PlayerModel>? players;
 
   TeamModel({
     this.id,
@@ -16,7 +18,9 @@ class TeamModel {
     this.shortName,
     this.tla,
     this.crest,
+    this.coach,
     this.matches,
+    this.players,
   });
 
   factory TeamModel.fromMap(Map<String, dynamic> map) {
@@ -40,10 +44,18 @@ class TeamModel {
             : null);
   }
 
-  factory TeamModel.fromJson(String source) =>
-      TeamModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  static List<TeamModel> fromList(list) {
-    return List<TeamModel>.from(list.map((x) => TeamModel.fromMap(x)));
+  TeamModel fromListPlayers(Map<String, dynamic> map) {
+    return TeamModel(
+      players: map['players'] != null
+          ? List<PlayerModel>.from(
+              (map['players'] as List<dynamic>).map<PlayerModel?>(
+                (x) => PlayerModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
+      coach: map['coach'] != null
+          ? CoachModel.fromMap(map['coach'] as Map<String, dynamic>)
+          : null,
+    );
   }
 }
