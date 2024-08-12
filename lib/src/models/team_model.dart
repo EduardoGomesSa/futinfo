@@ -34,28 +34,27 @@ class TeamModel {
   }
 
   TeamModel fromListMatches(Map<String, dynamic> map) {
-    return TeamModel(
-        matches: map['matches'] != null
-            ? List<MatchModel>.from(
-                (map['matches'] as List<dynamic>).map<MatchModel?>(
-                  (x) => MatchModel.fromMap(x as Map<String, dynamic>),
-                ),
-              )
-            : null);
+    matches = map['matches'] != null
+        ? List<MatchModel>.from(
+            (map['matches'] as List<dynamic>).map<MatchModel?>(
+              (x) => MatchModel.fromMap(x as Map<String, dynamic>),
+            ),
+          )
+        : null;
+    return this;
   }
 
   TeamModel fromListPlayers(Map<String, dynamic> map) {
-    return TeamModel(
-      players: map['players'] != null
-          ? List<PlayerModel>.from(
-              (map['players'] as List<dynamic>).map<PlayerModel?>(
-                (x) => PlayerModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-      coach: map['coach'] != null
-          ? CoachModel.fromMap(map['coach'] as Map<String, dynamic>)
-          : null,
-    );
+    players = map['squad'] != null
+        ? List<PlayerModel>.from(
+            (map['squad'] as List<dynamic>).map<PlayerModel?>(
+              (x) => PlayerModel.fromMap(x as Map<String, dynamic>),
+            ),
+          )
+        : null;
+    coach = map['coach'] != null
+        ? CoachModel.fromMap(map['coach'] as Map<String, dynamic>)
+        : null;
+    return this;
   }
 }

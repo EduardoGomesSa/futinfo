@@ -62,12 +62,25 @@ class FutinfoController extends GetxController {
     isLoading.value = true;
 
     ApiResult<TeamModel> result = await repository.getTeamGames(model);
-    print(result.data!.tla);
 
     if (!result.isError) {
       team = result.data!;
     } else {
-      appUtils.showToast(message: result.message!);
+      appUtils.showToast(message: result.message!, isError: true);
+    }
+
+    isLoading.value = false;
+  }
+
+  getTeamPlayers(TeamModel model) async {
+    isLoading.value = true;
+
+    ApiResult<TeamModel> result = await repository.getTeamPlayers(model);
+
+    if (!result.isError) {
+      team = result.data!;
+    } else {
+      appUtils.showToast(message: result.message!, isError: true);
     }
 
     isLoading.value = false;

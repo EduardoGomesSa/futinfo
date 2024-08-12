@@ -17,6 +17,7 @@ class TeamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.getTeamGames(model);
+      controller.getTeamPlayers(model);
     });
     return Scaffold(
       appBar: AppBar(
@@ -39,11 +40,11 @@ class TeamPage extends StatelessWidget {
           if (controller.isLoading.value) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            final teamGames = controller.team;
+            final team = controller.team;
 
-            if (teamGames.matches == null) {
+            if (team.matches == null) {
               return const Center(
-                child: Text("Nenhum jogo disponível"),
+                child: Text("Nenhuma informação disponível"),
               );
             }
             return Column(
@@ -57,8 +58,8 @@ class TeamPage extends StatelessWidget {
                 const Text("Jogos do Time"),
                 Expanded(child: Obx(() {
                   return controller.showMatches.value
-                      ? _buildMatchesList(teamGames)
-                      : _buildPlayersList();
+                      ? _buildMatchesList(team)
+                      : _buildPlayersList(team);
                 })),
               ],
             );
@@ -68,22 +69,23 @@ class TeamPage extends StatelessWidget {
     );
   }
 
-  Widget _buildMatchesList(TeamModel teamGames) {
+  Widget _buildMatchesList(TeamModel team) {
     return ListView.builder(
-      itemCount: teamGames.matches!.length,
+      itemCount: team.matches!.length,
       itemBuilder: (_, index) {
         //return Text("aaaaa");
-        return MatchWidget(model: teamGames.matches![index]);
+        return MatchWidget(model: team.matches![index]);
       },
     );
   }
 
-  Widget _buildPlayersList() {
+  Widget _buildPlayersList(TeamModel team) {
+    //final team = controller.getTeamPlayers(model);
     return ListView.builder(
-      itemCount: 5,
+      itemCount: team.players!.length,
       itemBuilder: (_, index) {
         //return Text("aaaaa");
-        return Text("Jogador $index");
+        return Text("Jogador ${team.players![index].name}");
       },
     );
   }

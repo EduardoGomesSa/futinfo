@@ -83,7 +83,7 @@ class FutinfoRepository {
     }
   }
 
-  Future<ApiResult<TeamModel>> getPlayers(TeamModel team) async {
+  Future<ApiResult<TeamModel>> getTeamPlayers(TeamModel team) async {
     String endpoint = "${Url.teamPlayers}/${team.id}";
 
     final response = await httpManager
@@ -93,11 +93,13 @@ class FutinfoRepository {
 
     if (response['squad'] != null) {
       var teamWithPlayers = team.fromListPlayers(convertMap(response));
+      print(teamWithPlayers);
 
       return ApiResult<TeamModel>(data: teamWithPlayers);
     } else {
       return ApiResult<TeamModel>(
-          message: 'Erro ao buscar jogadores do time. Tente novamente!', isError: true);
+          message: 'Erro ao buscar jogadores do time. Tente novamente!',
+          isError: true);
     }
   }
 

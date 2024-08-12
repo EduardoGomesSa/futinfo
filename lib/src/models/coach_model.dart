@@ -31,8 +31,8 @@ class CoachModel {
 }
 
 class Contract {
-  DateTime? start;
-  DateTime? until;
+  String? start;
+  String? until;
 
   Contract({
     this.start,
@@ -41,8 +41,8 @@ class Contract {
 
   factory Contract.fromMap(Map<String, dynamic> map) {
     return Contract(
-      start: map['start'] != null ? DateTime.parse(map['start']) : null,
-      until: map['until'] != null ? DateTime.parse(map['until']) : null,
+      start: map['start'] != null ? map['start'] as String : null,
+      until: map['until'] != null ? map['until'] as String : null,
     );
   }
 }
