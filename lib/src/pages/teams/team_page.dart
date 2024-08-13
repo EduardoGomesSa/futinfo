@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
+import 'package:futinfo/src/core/widgets/player_widget.dart';
 import 'package:futinfo/src/models/team_model.dart';
 import 'package:get/get.dart';
 
@@ -85,7 +86,7 @@ class TeamPage extends StatelessWidget {
       itemCount: team.players!.length,
       itemBuilder: (_, index) {
         //return Text("aaaaa");
-        return Text("Jogador ${team.players![index].name}");
+        return PlayerWidget(model: team.players![index]);
       },
     );
   }
