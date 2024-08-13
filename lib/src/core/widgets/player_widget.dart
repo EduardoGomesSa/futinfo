@@ -41,41 +41,46 @@ class PlayerWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8, left: 8, top: 10),
       child: Card(
+        margin: const EdgeInsets.only(left: 45, right: 45),
         color: Colors.white.withAlpha(100),
         child: Container(
           margin: const EdgeInsets.all(20),
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       const Icon(Icons.person, size: 13,),
+                      const SizedBox(width: 5),
                       Text(model.name!),
                     ],
                   ),
-                  Row(
-                    
+                  Row( 
                     children: [
                       const Icon(Icons.star, size: 13,),
+                      const SizedBox(width: 5),
                       Text("${getAge(model.dateOfBirth!)} anos"),
                     ],
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       const Icon(Icons.sports_soccer, size: 13,),
+                      const SizedBox(width: 5),
                       Text(getPositionInPortuguese(model.position!)),
                     ],
                   ),
                   Row(
                     children: [
                       const Icon(Icons.local_activity, size: 13,),
+                      const SizedBox(width: 5),
                       Text("${model.nationality}"),
                     ],
                   )
