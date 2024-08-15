@@ -40,7 +40,6 @@ class TeamPage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 favoriteController.controlFavorite(model.id!);
-                print("Clicou");
               },
               icon: Icon(Icons.star))
         ],

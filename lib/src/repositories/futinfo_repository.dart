@@ -104,17 +104,18 @@ class FutinfoRepository {
   }
 
   Future<ApiResult<List<TeamModel>>> getTeamsFavorites(List<int> ids) async {
-    String endpoint = "${Url.team}";
+    String endpoint = Url.team;
     List<TeamModel> listTeams = [];
 
     for (int i = 0; i < ids.length; i++) {
       var response = await httpManager.request(
-        url: "$endpoint/{${ids[i]}}",
+        url: "$endpoint/${ids[i]}",
         method: HttpMethods.get,
         headers: {
           'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
         },
       );
+      print(response);
 
       if (response['squad'] != null) {
         var team = TeamModel.fromMap(convertMap(response));
@@ -122,6 +123,8 @@ class FutinfoRepository {
         listTeams.add(team);
       }
     }
+
+    print("Quanrtidade de teams retornados ${listTeams.length}");
 
     if (listTeams.isNotEmpty) {
       return ApiResult<List<TeamModel>>(data: listTeams);

@@ -43,11 +43,13 @@ class FavoriteController extends GetxController {
     isLoading.value = true;
 
     List<int> ids = await repository.getAllId();
-    print("Chamou o Favorite Controller");
+    print("Quantidade de dados salvos "+ ids.length.toString());
 
     if (ids.isNotEmpty) {
       ApiResult<List<TeamModel>> result =
           await futinfoRepository.getTeamsFavorites(ids);
+      print("Antes do result");
+      print(result);
 
       if (!result.isError) {
         teams = result.data!;
@@ -55,5 +57,6 @@ class FavoriteController extends GetxController {
         appUtils.showToast(message: result.message!, isError: true);
       }
     }
+    isLoading.value = false;
   }
 }

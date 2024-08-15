@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futinfo/src/pages/favorites/favorite_page.dart';
 import 'package:futinfo/src/pages/home/home_page.dart';
 
 class BasePage extends StatefulWidget {
@@ -21,9 +22,7 @@ class _BasePageState extends State<BasePage> {
           controller: pageController,
           children: [
             HomePage(),
-            Container(
-              color: Colors.red,
-            )
+            FavoritePage(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
