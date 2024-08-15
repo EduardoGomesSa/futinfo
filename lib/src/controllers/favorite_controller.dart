@@ -26,6 +26,19 @@ class FavoriteController extends GetxController {
     getAllFavorites();
   }
 
+  controlFavorite(int id) async {
+    isLoading.value = true;
+
+    int saved = await repository.insert(id);
+    print("Valor de SAVED: $saved");
+
+    if (saved == 0) {
+      appUtils.showToast(
+          message: "Não foi possível favoritar este time. Tente novamente",
+          isError: true);
+    }
+  }
+
   getAllFavorites() async {
     isLoading.value = true;
 

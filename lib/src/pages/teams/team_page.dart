@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futinfo/src/controllers/favorite_controller.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
 import 'package:futinfo/src/core/widgets/player_widget.dart';
@@ -13,6 +14,7 @@ class TeamPage extends StatelessWidget {
 
   final TeamModel model;
   final FutinfoController controller = Get.find();
+  final FavoriteController favoriteController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,14 @@ class TeamPage extends StatelessWidget {
             Text(model.shortName!)
           ],
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                favoriteController.controlFavorite(model.id!);
+                print("Clicou");
+              },
+              icon: Icon(Icons.star))
+        ],
       ),
       body: GetX<FutinfoController>(
         init: controller,

@@ -7,11 +7,13 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class FavoriteRepository {
-  Future<void> insert(int idTeam) async {
+  Future<int> insert(int idTeam) async {
     final db = await Db.connection();
 
-    await db.insert('favorite_teams', {'id_team': idTeam},
+    var saved = await db.insert('favorite_teams', {'id_team': idTeam},
         conflictAlgorithm: ConflictAlgorithm.replace);
+
+    return saved;
   }
 
   Future<List<int>> getAllId() async {
