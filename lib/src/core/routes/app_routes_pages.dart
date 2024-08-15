@@ -1,3 +1,4 @@
+import 'package:futinfo/src/bindings/favoreite_binding.dart';
 import 'package:futinfo/src/bindings/futinfo_binding.dart';
 import 'package:futinfo/src/pages/base_page.dart';
 import 'package:futinfo/src/pages/home/home_page.dart';
@@ -9,7 +10,8 @@ abstract class AppPages {
       name: AppRoutes.base,
       page: () => const BasePage(),
       bindings: [
-        FutinfoBinding()
+        FutinfoBinding(),
+        FavoreiteBinding(),
       ]
     ),
     GetPage(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:futinfo/src/bindings/favoreite_binding.dart';
 import 'package:futinfo/src/bindings/futinfo_binding.dart';
+import 'package:futinfo/src/core/routes/app_routes_pages.dart';
 import 'package:futinfo/src/pages/base_page.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: FutinfoBinding(),
-      home: const BasePage(),
+      initialRoute: AppRoutes.base,
+      getPages: AppPages.pages,
     );
   }
 }

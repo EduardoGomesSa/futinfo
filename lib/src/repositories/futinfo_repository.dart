@@ -103,6 +103,36 @@ class FutinfoRepository {
     }
   }
 
+  Future<ApiResult<List<TeamModel>>> getTeamsFavorites(List<int> ids) async {
+    String endpoint = "${Url.team}";
+    List<TeamModel> listTeams = [];
+
+    for (int i = 0; i < ids.length; i++) {
+      var response = await httpManager.request(
+        url: "$endpoint/{${ids[i]}}",
+        method: HttpMethods.get,
+        headers: {
+          'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+        },
+      );
+
+      if (response['squad'] != null) {
+        var team = TeamModel.fromMap(convertMap(response));
+
+        listTeams.add(team);
+      }
+    }
+
+    if (listTeams.isNotEmpty) {
+      return ApiResult<List<TeamModel>>(data: listTeams);
+    } else {
+      return ApiResult<List<TeamModel>>(
+          message:
+              "Não foi possível buscar os times favoritos. Tente novamente!",
+          isError: true);
+    }
+  }
+
   static Map<String, dynamic> convertMap(Map<dynamic, dynamic> originalMap) {
     return originalMap.map((key, value) => MapEntry(key.toString(), value));
   }
