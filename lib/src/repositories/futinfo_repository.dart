@@ -115,7 +115,6 @@ class FutinfoRepository {
           'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
         },
       );
-      print(response);
 
       if (response['squad'] != null) {
         var team = TeamModel.fromMap(convertMap(response));

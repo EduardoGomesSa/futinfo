@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/favorite_controller.dart';
+import 'package:futinfo/src/core/widgets/team_widget.dart';
 import 'package:get/get.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -29,7 +30,7 @@ class FavoritePage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: favoriteTeams.length,
               itemBuilder: (_, index) {
-                return Text(favoriteTeams[index].name!);
+                return TeamWidget(model: favoriteTeams[index]);
               },
             );
           }
