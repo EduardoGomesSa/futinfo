@@ -37,11 +37,16 @@ class TeamPage extends StatelessWidget {
           ],
         ),
         actions: [
-          IconButton(
+          Obx(
+            () => IconButton(
               onPressed: () {
-                favoriteController.controlFavorite(model.id!);
+                favoriteController.controlFavorite(model);
               },
-              icon: Icon(Icons.star))
+              icon: Icon(model.isFavorite.value
+                  ? Icons.star
+                  : Icons.star_border_outlined),
+            ),
+          ),
         ],
       ),
       body: GetX<FutinfoController>(

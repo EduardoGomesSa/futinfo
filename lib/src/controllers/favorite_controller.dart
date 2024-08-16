@@ -17,7 +17,7 @@ class FavoriteController extends GetxController {
   });
 
   RxBool isLoading = false.obs;
-  List<TeamModel> teams = [];
+  RxList<TeamModel> teams = <TeamModel>[].obs;
 
   @override
   void onInit() {
@@ -26,16 +26,36 @@ class FavoriteController extends GetxController {
     getAllFavorites();
   }
 
-  controlFavorite(int id) async {
+  controlFavorite(TeamModel model) async {
     isLoading.value = true;
 
-    int saved = await repository.insert(id);
-    print("Valor de SAVED: $saved");
+    var teamAlreadyFav = await repository.getById(model.id!);
 
-    if (saved == 0) {
-      appUtils.showToast(
-          message: "Não foi possível favoritar este time. Tente novamente",
-          isError: true);
+    if (teamAlreadyFav == 0) {
+      int saved = await repository.insert(model.id!);
+
+      if (saved != 0) {
+        model.setIsFavorite(true);
+        teams.add(model);
+        print("time adicionado $saved");
+      } else {
+        appUtils.showToast(
+            message: "Não foi possível favoritar este time. Tente novamente!",
+            isError: true);
+      }
+    } else {
+      int removed = await repository.remove(model.id!);
+
+      if (removed != 0) {
+        model.setIsFavorite(false);
+        teams.remove(model);
+        print("time removido $removed");
+      } else {
+        appUtils.showToast(
+            message:
+                "Não foi possível desfavoritar este time. Tente novamente!",
+            isError: true);
+      }
     }
   }
 
@@ -43,20 +63,21 @@ class FavoriteController extends GetxController {
     isLoading.value = true;
 
     List<int> ids = await repository.getAllId();
-    print("Quantidade de dados salvos "+ ids.length.toString());
 
     if (ids.isNotEmpty) {
       ApiResult<List<TeamModel>> result =
           await futinfoRepository.getTeamsFavorites(ids);
-      print("Antes do result");
-      print(result);
 
       if (!result.isError) {
-        teams = result.data!;
+        teams.assignAll(result.data!);
       } else {
         appUtils.showToast(message: result.message!, isError: true);
       }
+    } else {
+      teams.clear();
     }
     isLoading.value = false;
   }
+
+  //isFavorite()
 }

@@ -1,9 +1,5 @@
 import 'dart:async';
-
-import 'package:flutter/widgets.dart';
-import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/repositories/databases/db.dart';
-import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class FavoriteRepository {
@@ -26,5 +22,32 @@ class FavoriteRepository {
     }).toList();
 
     return ids;
+  }
+
+  Future<int> remove(int idTeam) async {
+    final db = await Db.connection();
+
+    final deleted = await db
+        .delete('favorite_teams', where: 'id_team = ?', whereArgs: [idTeam]);
+
+    return deleted;
+  }
+
+  Future<int> getById(int idTeam) async {
+    final db = await Db.connection();
+
+    final result = await db.query(
+      'favorite_teams',
+      columns: ['id_team'],
+      where: 'id_team = ?',
+      whereArgs: [idTeam],
+      limit: 1,
+    );
+
+    if (result.isNotEmpty) {
+      return result.first['id_team'] as int;
+    }
+
+    return 0;
   }
 }

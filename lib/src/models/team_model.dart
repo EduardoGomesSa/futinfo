@@ -1,6 +1,7 @@
 import 'package:futinfo/src/models/coach_model.dart';
 import 'package:futinfo/src/models/match_model.dart';
 import 'package:futinfo/src/models/player_model.dart';
+import 'package:get/get.dart';
 
 class TeamModel {
   int? id;
@@ -11,6 +12,7 @@ class TeamModel {
   CoachModel? coach;
   List<MatchModel>? matches;
   List<PlayerModel>? players;
+  RxBool isFavorite;
 
   TeamModel({
     this.id,
@@ -21,7 +23,8 @@ class TeamModel {
     this.coach,
     this.matches,
     this.players,
-  });
+    bool isFavorite = false,
+  }) : isFavorite = RxBool(isFavorite);
 
   factory TeamModel.fromMap(Map<String, dynamic> map) {
     return TeamModel(
@@ -56,5 +59,9 @@ class TeamModel {
         ? CoachModel.fromMap(map['coach'] as Map<String, dynamic>)
         : null;
     return this;
+  }
+
+  void setIsFavorite(bool value) {
+    isFavorite.value = value;
   }
 }
