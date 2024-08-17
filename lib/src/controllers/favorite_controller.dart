@@ -79,5 +79,13 @@ class FavoriteController extends GetxController {
     isLoading.value = false;
   }
 
+  checkIfIsFavorite(TeamModel model) async {
+    var isFavorite = await repository.getById(model.id!);
+
+    if (isFavorite > 0) {
+      model.setIsFavorite(true);
+    }
+  }
+
   //isFavorite()
 }

@@ -21,6 +21,7 @@ class TeamPage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.getTeamGames(model);
       controller.getTeamPlayers(model);
+      favoriteController.checkIfIsFavorite(model);
     });
     return Scaffold(
       appBar: AppBar(
