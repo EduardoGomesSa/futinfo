@@ -13,6 +13,7 @@ class TablePage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.getTableLeague();
     });
+    final columnLenght = MediaQuery.of(context).size.width * 0.04;
 
     return Scaffold(
       appBar: AppBar(
@@ -40,7 +41,7 @@ class TablePage extends StatelessWidget {
                   );
                 }
                 return DataTable(
-                  columnSpacing: 10.5,
+                  columnSpacing: columnLenght,
                   columns: const [
                     DataColumn(label: Text('Pos')),
                     DataColumn(label: Text('Time')),

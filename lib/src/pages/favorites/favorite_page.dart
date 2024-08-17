@@ -20,6 +20,10 @@ class FavoritePage extends StatelessWidget {
           return const Center(
             child: CircularProgressIndicator(),
           );
+        } else if (controller.teams.isEmpty) {
+          return const Center(
+            child: Text("Nenhum time favorito ainda"),
+          );
         } else {
           var favoriteTeams = controller.teams;
           return ListView.builder(
