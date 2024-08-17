@@ -40,6 +40,13 @@ class TeamPage extends StatelessWidget {
         actions: [
           Obx(
             () => IconButton(
+              onPressed: controller.toggleView,
+              icon: Icon(
+                  controller.showMatches.value ? Icons.group : Icons.games),
+            ),
+          ),
+          Obx(
+            () => IconButton(
               onPressed: () {
                 favoriteController.controlFavorite(model);
               },
@@ -65,13 +72,6 @@ class TeamPage extends StatelessWidget {
             }
             return Column(
               children: [
-                ElevatedButton(
-                  onPressed: controller.toggleView,
-                  child: Text(controller.showMatches.value
-                      ? 'Ver elenco'
-                      : 'Ver jogos'),
-                ),
-                const Text("Jogos do Time"),
                 Expanded(child: Obx(() {
                   return controller.showMatches.value
                       ? _buildMatchesList(team)
@@ -89,7 +89,17 @@ class TeamPage extends StatelessWidget {
     return ListView.builder(
       itemCount: team.matches!.length,
       itemBuilder: (_, index) {
-        //return Text("aaaaa");
+        if (index == 0) {
+          return Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text("Jogos do time"),
+              ),
+              MatchWidget(model: team.matches![index]),
+            ],
+          );
+        }
         return MatchWidget(model: team.matches![index]);
       },
     );
@@ -104,6 +114,17 @@ class TeamPage extends StatelessWidget {
     return ListView.builder(
       itemCount: team.players!.length,
       itemBuilder: (_, index) {
+        if (index == 0) {
+          return Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text("Elenco do time"),
+              ),
+              PlayerWidget(model: team.players![index]),
+            ],
+          );
+        }
         return PlayerWidget(model: team.players![index]);
       },
     );

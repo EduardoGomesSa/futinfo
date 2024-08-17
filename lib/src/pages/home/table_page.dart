@@ -13,7 +13,7 @@ class TablePage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.getTableLeague();
     });
-    final columnLenght = MediaQuery.of(context).size.width * 0.04;
+    final columnLenght = MediaQuery.of(context).size.width * 0.038;
 
     return Scaffold(
       appBar: AppBar(
@@ -37,53 +37,90 @@ class TablePage extends StatelessWidget {
                     table.teamsTable == null ||
                     table.teamsTable!.isEmpty) {
                   return const Center(
-                    child: Text("Nenhuma tabela disponível"),
+                    child: Text("Tabela indisponível no momento"),
                   );
                 }
                 return DataTable(
                   columnSpacing: columnLenght,
+                  headingRowColor: WidgetStateProperty.resolveWith<Color?>(
+                              (Set states) {
+                            return Colors.black;
+                          }),
                   columns: const [
-                    DataColumn(label: Text('Pos')),
-                    DataColumn(label: Text('Time')),
-                    DataColumn(label: Text('Pts')),
-                    DataColumn(label: Text('J')),
-                    DataColumn(label: Text('V')),
-                    DataColumn(label: Text('E')),
-                    DataColumn(label: Text('D')),
-                    DataColumn(label: Text('GF')),
-                    DataColumn(label: Text('GS')),
-                    DataColumn(label: Text('SG')),
+                    DataColumn(label: Text('Pos', style:  TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('Time', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('Pts', style:  TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('J', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('V', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('E', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('D', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('GF', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('GS', style: TextStyle(color: Colors.white),)),
+                    DataColumn(label: Text('SG', style: TextStyle(color: Colors.white),)),
                   ],
                   rows: List.generate(
                     table.teamsTable!.length,
-                    (index) => DataRow(cells: [
-                      DataCell(Text("${table.teamsTable![index].position}°")),
-                      DataCell(Row(
-                        children: [
-                          LogoWidget(
-                            model: table.teamsTable![index].team!,
-                            size: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(table.teamsTable![index].team!.tla!),
-                          )
-                        ],
-                      )),
-                      DataCell(
-                          Text(table.teamsTable![index].points.toString())),
-                      DataCell(Text(
-                          table.teamsTable![index].playedGames.toString())),
-                      DataCell(Text(table.teamsTable![index].won.toString())),
-                      DataCell(Text(table.teamsTable![index].draw.toString())),
-                      DataCell(Text(table.teamsTable![index].lost.toString())),
-                      DataCell(
-                          Text(table.teamsTable![index].goalsFor.toString())),
-                      DataCell(Text(
-                          table.teamsTable![index].goalsAgainst.toString())),
-                      DataCell(Text(
-                          table.teamsTable![index].goalDifference.toString())),
-                    ]),
+                    (index) {
+                      final team = table.teamsTable![index];
+                      Color rowColor = Colors.transparent;
+
+                      if (index < 6) {
+                        rowColor = Colors.blue.withOpacity(0.2);
+                      } else if (index >= table.teamsTable!.length - 4) {
+                        rowColor = Colors.red.withOpacity(0.2);
+                      }
+
+                      return DataRow(
+                          color: WidgetStateProperty.resolveWith<Color?>(
+                              (Set states) {
+                            return rowColor;
+                          }),
+                          cells: [
+                            DataCell(
+                              Container(
+                                width: double.infinity,
+                                color: Colors.black,
+                                padding: const EdgeInsets.only(left: 8, right: 1, top: 14, bottom: 10),
+                                child: Text(
+                                    "${table.teamsTable![index].position}°", style: const TextStyle(color: Colors.white),),
+                              ),
+                            ),
+                            DataCell(Row(
+                              children: [
+                                LogoWidget(
+                                  model: table.teamsTable![index].team!,
+                                  size: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child:
+                                      Text(table.teamsTable![index].team!.tla!),
+                                )
+                              ],
+                            )),
+                            DataCell(Text(
+                              table.teamsTable![index].points.toString(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
+                            DataCell(Text(table.teamsTable![index].playedGames
+                                .toString())),
+                            DataCell(
+                                Text(table.teamsTable![index].won.toString())),
+                            DataCell(
+                                Text(table.teamsTable![index].draw.toString())),
+                            DataCell(
+                                Text(table.teamsTable![index].lost.toString())),
+                            DataCell(Text(
+                                table.teamsTable![index].goalsFor.toString())),
+                            DataCell(Text(table.teamsTable![index].goalsAgainst
+                                .toString())),
+                            DataCell(Text(table
+                                .teamsTable![index].goalDifference
+                                .toString())),
+                          ]);
+                    },
                   ),
                 );
               }

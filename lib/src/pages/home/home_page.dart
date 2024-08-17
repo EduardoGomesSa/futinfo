@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => TablePage()));
               },
-              icon: const Icon(Icons.radar)),
+              icon: const Icon(Icons.table_chart)),
           PopupMenuButton<int>(
               icon: const Icon(Icons.list),
               onSelected: (selectedRound) {
@@ -75,15 +75,21 @@ class HomePage extends StatelessWidget {
                       itemCount: currentRoundMatches.length,
                       itemBuilder: (_, index) {
                         if (index == 0) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: Text(
-                                "Rodada ${controller.selectedRound.value}",
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                          return Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Center(
+                                  child: Text(
+                                    "Rodada ${controller.selectedRound.value}",
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
                               ),
-                            ),
+                              MatchWidget(model: currentRoundMatches[index]),
+                            ],
                           );
                         }
                         return MatchWidget(model: currentRoundMatches[index]);
