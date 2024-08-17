@@ -96,11 +96,14 @@ class TeamPage extends StatelessWidget {
   }
 
   Widget _buildPlayersList(TeamModel team) {
-    //final team = controller.getTeamPlayers(model);
+    if (team.players == null) {
+      return const Center(
+        child: Text("Elenco não disponível no momento"),
+      );
+    }
     return ListView.builder(
       itemCount: team.players!.length,
       itemBuilder: (_, index) {
-        //return Text("aaaaa");
         return PlayerWidget(model: team.players![index]);
       },
     );
