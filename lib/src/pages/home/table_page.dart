@@ -17,7 +17,7 @@ class TablePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tabela Brasileirão"),
+        title: const Text("Tabela Brasileirão Série A"),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
