@@ -57,6 +57,8 @@ class FavoriteController extends GetxController {
             isError: true);
       }
     }
+
+    isLoading.value = false;
   }
 
   getAllFavorites() async {
