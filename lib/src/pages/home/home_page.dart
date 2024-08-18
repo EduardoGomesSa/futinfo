@@ -13,11 +13,21 @@ class HomePage extends StatelessWidget {
       GlobalKey<RefreshIndicatorState>();
   final FutinfoController controller = Get.find();
 
-  List<MatchModel> getMatchesForRound(RoundModel round, [int? roundNumber]) {
-    int targetRound = roundNumber ?? round.season!.currentMatchday!;
+  List<MatchModel> getMatchesForRound(RoundModel round, {int? roundNumber}) {
+    if (roundNumber != null) {
+      return round.matches!
+          .where((match) => match.matchday == roundNumber)
+          .toList();
+    }
+
+    int currentMatchday = round.season!.currentMatchday!;
+    controller.selectedRound.value = currentMatchday;
 
     return round.matches!
-        .where((match) => match.matchday == targetRound)
+        .where((match) =>
+            match.matchday == currentMatchday ||
+            match.matchday == currentMatchday + 1 ||
+            match.matchday == currentMatchday + 2)
         .toList();
   }
 
@@ -52,7 +62,10 @@ class HomePage extends StatelessWidget {
       ),
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
-        onRefresh: () async => controller.getAllRounds(),
+        onRefresh: () async {
+          controller.selectedRound.value = null;
+          controller.getAllRounds();
+        },
         child: GetX<FutinfoController>(
           init: controller,
           builder: (controller) {
@@ -61,8 +74,8 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              final currentRoundMatches = getMatchesForRound(
-                  controller.round, controller.selectedRound.value);
+              final currentRoundMatches = getMatchesForRound(controller.round,
+                  roundNumber: controller.selectedRound.value);
               return Column(
                 children: [
                   Text(
@@ -74,14 +87,19 @@ class HomePage extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       itemCount: currentRoundMatches.length,
                       itemBuilder: (_, index) {
-                        if (index == 0) {
+                        int roundGroup =
+                            (index ~/ 10) + controller.selectedRound.value! !=
+                                    false
+                                ? controller.selectedRound.value!
+                                : controller.round.season!.currentMatchday!;
+                        if (index % 10 == 0) {
                           return Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Center(
                                   child: Text(
-                                    "Rodada ${controller.selectedRound.value}",
+                                    "Rodada ${roundGroup++}",
                                     style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
