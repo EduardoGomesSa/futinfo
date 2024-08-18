@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Jogos'),
+        title: Text(controller.round.competition!.name!),
         actions: [
           IconButton(
               onPressed: () {
@@ -78,10 +78,6 @@ class HomePage extends StatelessWidget {
                   roundNumber: controller.selectedRound.value);
               return Column(
                 children: [
-                  Text(
-                    controller.round.competition!.name!,
-                    style: const TextStyle(fontSize: 18),
-                  ),
                   Expanded(
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
