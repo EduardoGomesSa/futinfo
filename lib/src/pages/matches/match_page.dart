@@ -16,7 +16,7 @@ class MatchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Jogo"),
+          title: const Text("Detalhes do jogo"),
         ),
         body: Column(
           children: [
