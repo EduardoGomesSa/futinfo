@@ -61,9 +61,9 @@ class FutinfoRepository {
     }
   }
 
-  Future<ApiResult<TeamModel>> getTeamGames(TeamModel team) async {
+  Future<ApiResult<TeamModel>> getTeamGames(TeamModel team, String startDate, String endDate) async {
     String endpoint =
-        "${Url.teamMatches}/${team.id}/matches?dateFrom=2024-04-14&dateTo=2024-05-08";
+        "${Url.teamMatches}/${team.id}/matches?dateFrom=$startDate&dateTo=$endDate";
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.get,

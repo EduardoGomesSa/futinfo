@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/favorite_controller.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
@@ -66,7 +68,7 @@ class TeamPage extends StatelessWidget {
               children: [
                 Expanded(child: Obx(() {
                   return controller.showMatches.value
-                      ? _buildMatchesList(team)
+                      ? _buildMatchesList(team, context)
                       : _buildPlayersList(team);
                 })),
               ],
@@ -77,7 +79,7 @@ class TeamPage extends StatelessWidget {
     );
   }
 
-  Widget _buildMatchesList(TeamModel team) {
+  Widget _buildMatchesList(TeamModel team, BuildContext context) {
     return ListView.builder(
       itemCount: team.matches!.length,
       itemBuilder: (_, index) {
@@ -87,6 +89,35 @@ class TeamPage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text("Jogos do time"),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Obx(
+                      () => TextFormField(
+                        decoration:
+                            const InputDecoration(labelText: "Data inicial"),
+                        readOnly: true,
+                        onTap: () => controller.selectStartDate(context, model),
+                        controller: TextEditingController(
+                            text: controller.startDate.value),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Obx(
+                      () => TextFormField(
+                        decoration:
+                            const InputDecoration(labelText: 'Data final'),
+                        readOnly: true,
+                        onTap: () => controller.selectEndDate(context, model),
+                        controller: TextEditingController(
+                            text: controller.lastDate.value),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               MatchWidget(model: team.matches![index]),
             ],
