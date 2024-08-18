@@ -61,7 +61,6 @@ class TablePage extends StatelessWidget {
                   rows: List.generate(
                     table.teamsTable!.length,
                     (index) {
-                      final team = table.teamsTable![index];
                       Color rowColor = Colors.transparent;
 
                       if (index < 6) {
