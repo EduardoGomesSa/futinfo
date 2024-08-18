@@ -8,22 +8,30 @@ class FavoriteIconWidget extends StatelessWidget {
     super.key,
     required this.controller,
     required this.model,
+    this.alreadyFavorite = false,
   });
 
   final FavoriteController controller;
   final TeamModel model;
+  final bool alreadyFavorite;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-            () => IconButton(
-              onPressed: () {
-                controller.controlFavorite(model);
-              },
-              icon: Icon(model.isFavorite.value
-                  ? Icons.star
-                  : Icons.star_border_outlined),
-            ),
-          );
+    if (alreadyFavorite) {
+      return IconButton(
+          onPressed: () {
+            controller.controlFavorite(model);
+          },
+          icon: Icon(Icons.delete, color: Colors.red.shade300,));
+    }
+
+    return Obx(() {
+      return IconButton(
+        onPressed: () {
+          controller.controlFavorite(model);
+        },
+        icon: Icon(model.isFavorite.value ? Icons.star : Icons.star_border, color: Colors.yellow),
+      );
+    });
   }
 }

@@ -25,13 +25,19 @@ class TeamWidget extends StatelessWidget {
         child: Container(
             margin: const EdgeInsets.all(20),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: LogoWidget(model: model),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: LogoWidget(model: model),
+                    ),
+                    Text(model.shortName!),
+                  ],
                 ),
-                Text(model.shortName!),
-                FavoriteIconWidget(controller: controller, model: model),
+                
+                FavoriteIconWidget(controller: controller, model: model, alreadyFavorite: true,),
               ],
             )),
       ),
