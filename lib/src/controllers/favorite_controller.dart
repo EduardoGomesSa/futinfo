@@ -60,23 +60,26 @@ class FavoriteController extends GetxController {
   }
 
   getAllFavorites() async {
-    isLoading.value = true;
+    try {
+      isLoading.value = true;
 
-    List<int> ids = await repository.getAllId();
+      List<int> ids = await repository.getAllId();
 
-    if (ids.isNotEmpty) {
-      ApiResult<List<TeamModel>> result =
-          await futinfoRepository.getTeamsFavorites(ids);
+      if (ids.isNotEmpty) {
+        ApiResult<List<TeamModel>> result =
+            await futinfoRepository.getTeamsFavorites(ids);
 
-      if (!result.isError) {
-        teams.assignAll(result.data!);
+        if (!result.isError) {
+          teams.assignAll(result.data!);
+        } else {
+          appUtils.showToast(message: result.message!, isError: true);
+        }
       } else {
-        appUtils.showToast(message: result.message!, isError: true);
+        teams.clear();
       }
-    } else {
-      teams.clear();
+    } finally {
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 
   checkIfIsFavorite(TeamModel model) async {
@@ -84,6 +87,8 @@ class FavoriteController extends GetxController {
 
     if (isFavorite > 0) {
       model.setIsFavorite(true);
+    } else {
+      model.setIsFavorite(false);
     }
   }
 

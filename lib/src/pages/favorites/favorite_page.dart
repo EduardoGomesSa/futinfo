@@ -30,7 +30,7 @@ class FavoritePage extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemCount: favoriteTeams.length,
             itemBuilder: (_, index) {
-              return TeamWidget(model: favoriteTeams[index]);
+              return TeamWidget(model: favoriteTeams[index], controller: controller,);
             },
           );
         }

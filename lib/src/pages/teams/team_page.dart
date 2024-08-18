@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/favorite_controller.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
+import 'package:futinfo/src/core/widgets/favorite_icon_widget.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
 import 'package:futinfo/src/core/widgets/player_widget.dart';
 import 'package:futinfo/src/models/team_model.dart';
@@ -45,16 +46,7 @@ class TeamPage extends StatelessWidget {
                   controller.showMatches.value ? Icons.group : Icons.games),
             ),
           ),
-          Obx(
-            () => IconButton(
-              onPressed: () {
-                favoriteController.controlFavorite(model);
-              },
-              icon: Icon(model.isFavorite.value
-                  ? Icons.star
-                  : Icons.star_border_outlined),
-            ),
-          ),
+          FavoriteIconWidget(controller: favoriteController, model: model),
         ],
       ),
       body: GetX<FutinfoController>(
