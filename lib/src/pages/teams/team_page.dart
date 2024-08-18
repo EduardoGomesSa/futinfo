@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/favorite_controller.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
@@ -87,37 +85,43 @@ class TeamPage extends StatelessWidget {
           return Column(
             children: [
               const Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text("Selecione um intervalo de tempo"),
+                    ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Obx(
+                        () => TextFormField(
+                          decoration: const InputDecoration(labelText: "De"),
+                          readOnly: true,
+                          onTap: () =>
+                              controller.selectStartDate(context, model),
+                          controller: TextEditingController(
+                              text: controller.startDate.value),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Obx(
+                        () => TextFormField(
+                          decoration: const InputDecoration(labelText: 'Até'),
+                          readOnly: true,
+                          onTap: () => controller.selectEndDate(context, model),
+                          controller: TextEditingController(
+                              text: controller.lastDate.value),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text("Jogos do time"),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Obx(
-                      () => TextFormField(
-                        decoration:
-                            const InputDecoration(labelText: "Data inicial"),
-                        readOnly: true,
-                        onTap: () => controller.selectStartDate(context, model),
-                        controller: TextEditingController(
-                            text: controller.startDate.value),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Obx(
-                      () => TextFormField(
-                        decoration:
-                            const InputDecoration(labelText: 'Data final'),
-                        readOnly: true,
-                        onTap: () => controller.selectEndDate(context, model),
-                        controller: TextEditingController(
-                            text: controller.lastDate.value),
-                      ),
-                    ),
-                  ),
-                ],
               ),
               MatchWidget(model: team.matches![index]),
             ],
