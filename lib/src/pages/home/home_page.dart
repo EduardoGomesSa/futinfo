@@ -87,11 +87,9 @@ class HomePage extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       itemCount: currentRoundMatches.length,
                       itemBuilder: (_, index) {
-                        int roundGroup =
-                            (index ~/ 10) + controller.selectedRound.value! !=
-                                    false
-                                ? controller.selectedRound.value!
-                                : controller.round.season!.currentMatchday!;
+                        int roundGroup = controller.selectedRound.value ??
+                            controller.round.season!.currentMatchday!;
+                        roundGroup += (index ~/ 10);
                         if (index % 10 == 0) {
                           return Column(
                             children: [
@@ -99,7 +97,7 @@ class HomePage extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Center(
                                   child: Text(
-                                    "Rodada ${roundGroup++}",
+                                    "Rodada ${roundGroup}",
                                     style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
