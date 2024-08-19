@@ -13,7 +13,7 @@ class FavoritePage extends StatelessWidget {
     controller.getAllFavorites();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Favoritos"),
+        title: const Text("Meus times favoritos"),
       ),
       body: Obx(() {
         if (controller.isLoading.value) {

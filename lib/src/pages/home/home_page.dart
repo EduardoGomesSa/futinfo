@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.round.competition!.name!),
+        title: Text(controller.round.competition != null ? controller.round.competition!.name! : "Campeonato Brasileiro Série A"),
         actions: [
           IconButton(
               onPressed: () {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:futinfo/src/bindings/favoreite_binding.dart';
 import 'package:futinfo/src/bindings/futinfo_binding.dart';
 import 'package:futinfo/src/core/routes/app_routes_pages.dart';
-import 'package:futinfo/src/pages/base_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: false,
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.blue)
+        appBarTheme: AppBarTheme(backgroundColor: Colors.blue.shade400)
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: FutinfoBinding(),
