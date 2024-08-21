@@ -7,7 +7,6 @@ import 'package:futinfo/src/core/routes/app_routes_pages.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
-  print('Current working directory: ${Directory.current.path}');
   await dotenv.load(fileName: "assets/.env");
 
   runApp(const MyApp());
