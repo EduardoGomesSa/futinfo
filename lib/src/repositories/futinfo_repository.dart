@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:futinfo/src/core/services/http_manager.dart';
 import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
@@ -16,14 +17,14 @@ class FutinfoRepository {
   });
 
   Future<ApiResult<RoundModel>> getAllRounds() async {
-    //await dotenv.load();
+    String? apiToken = dotenv.env['API_TOKEN'];
 
     const String endpoint = Url.matches;
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.get,
       headers: {
-        'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+        'X-Auth-Token': apiToken,
       },
     );
 
@@ -40,12 +41,13 @@ class FutinfoRepository {
   }
 
   Future<ApiResult<TableModel>> getTableLeague() async {
+    String? apiToken = dotenv.env['API_TOKEN'];
     const String endpoint = Url.leagueTable;
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.get,
       headers: {
-        'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+        'X-Auth-Token': apiToken,
       },
     );
 
@@ -61,14 +63,16 @@ class FutinfoRepository {
     }
   }
 
-  Future<ApiResult<TeamModel>> getTeamGames(TeamModel team, String startDate, String endDate) async {
+  Future<ApiResult<TeamModel>> getTeamGames(
+      TeamModel team, String startDate, String endDate) async {
+    String? apiToken = dotenv.env['API_TOKEN'];
     String endpoint =
         "${Url.teamMatches}/${team.id}/matches?dateFrom=$startDate&dateTo=$endDate";
     final response = await httpManager.request(
       url: endpoint,
       method: HttpMethods.get,
       headers: {
-        'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+        'X-Auth-Token': apiToken,
       },
     );
 
@@ -84,11 +88,12 @@ class FutinfoRepository {
   }
 
   Future<ApiResult<TeamModel>> getTeamPlayers(TeamModel team) async {
+    String? apiToken = dotenv.env['API_TOKEN'];
     String endpoint = "${Url.teamPlayers}/${team.id}";
 
     final response = await httpManager
         .request(url: endpoint, method: HttpMethods.get, headers: {
-      'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+      'X-Auth-Token': apiToken,
     });
 
     if (response['squad'] != null) {
@@ -104,6 +109,7 @@ class FutinfoRepository {
   }
 
   Future<ApiResult<List<TeamModel>>> getTeamsFavorites(List<int> ids) async {
+    String? apiToken = dotenv.env['API_TOKEN'];
     String endpoint = Url.team;
     List<TeamModel> listTeams = [];
 
@@ -112,7 +118,7 @@ class FutinfoRepository {
         url: "$endpoint/${ids[i]}",
         method: HttpMethods.get,
         headers: {
-          'X-Auth-Token': 'b14e6d13a40e46248146f1b73e00b529',
+          'X-Auth-Token': apiToken,
         },
       );
 
