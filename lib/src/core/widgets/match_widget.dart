@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/core/widgets/logo_widget.dart';
+import 'package:futinfo/src/core/widgets/time_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
 import 'package:futinfo/src/pages/matches/match_page.dart';
 
@@ -33,11 +34,7 @@ class MatchWidget extends StatelessWidget {
                 const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 5),
-                  child: Text(appUltils.formatDateTimeHour(model.utcDate!), style: const TextStyle(fontSize: 18)),
-                ),
-                Text(appUltils.formatDateTime(model.utcDate!), style: const TextStyle(fontSize: 14, color: Colors.black54)),
+                TimeWidget(utcDate: model.utcDate!),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
