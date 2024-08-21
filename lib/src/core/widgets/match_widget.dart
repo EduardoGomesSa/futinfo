@@ -33,8 +33,11 @@ class MatchWidget extends StatelessWidget {
                 const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: Column(
               children: [
-                Text(appUltils.formatDateTimeHour(model.utcDate!)),
-                Text(appUltils.formatDateTime(model.utcDate!)),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Text(appUltils.formatDateTimeHour(model.utcDate!), style: const TextStyle(fontSize: 18)),
+                ),
+                Text(appUltils.formatDateTime(model.utcDate!), style: const TextStyle(fontSize: 14, color: Colors.black54)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
