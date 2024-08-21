@@ -22,6 +22,7 @@ class TeamWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Card(
+        color: Colors.white.withAlpha(100),
         child: Container(
             margin: const EdgeInsets.all(20),
             child: Row(

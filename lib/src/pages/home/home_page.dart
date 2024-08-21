@@ -92,11 +92,23 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Center(
-                                  child: Text(
-                                    "Rodada ${roundGroup}",
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 15, right: 15),
+                                    child: Row(
+                                      children: [
+                                        const Expanded(child: Divider(color: Colors.black38, thickness: 2,)),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8),
+                                          child: Text(
+                                            "Rodada $roundGroup",
+                                            style: const TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                        ),
+                                        const Expanded(child: Divider(color: Colors.black38, thickness: 2,)),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
