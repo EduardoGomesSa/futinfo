@@ -13,7 +13,7 @@ class TimeWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 5),
           child: Text(appUltils.formatDateTimeHour(utcDate),
-              style: const TextStyle(fontSize: 18)),
+              style: const TextStyle(fontSize: 17)),
         ),
         Text(appUltils.formatDateTime(utcDate),
             style: const TextStyle(fontSize: 14, color: Colors.black54)),

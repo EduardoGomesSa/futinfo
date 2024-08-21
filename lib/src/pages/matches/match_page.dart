@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/core/widgets/logo_widget.dart';
+import 'package:futinfo/src/core/widgets/time_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
 
 class MatchPage extends StatelessWidget {
@@ -29,8 +30,7 @@ class MatchPage extends StatelessWidget {
                       left: 20, right: 20, top: 20, bottom: 20),
                   child: Column(
                     children: [
-                      Text(appUtils.formatDateTimeHour(model.utcDate!)),
-                      Text(appUtils.formatDateTime(model.utcDate!)),
+                      TimeWidget(utcDate: model.utcDate!),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
