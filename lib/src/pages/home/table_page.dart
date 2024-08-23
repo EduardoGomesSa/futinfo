@@ -42,21 +42,64 @@ class TablePage extends StatelessWidget {
                 }
                 return DataTable(
                   columnSpacing: columnLenght,
-                  headingRowColor: WidgetStateProperty.resolveWith<Color?>(
-                              (Set states) {
-                            return Colors.black;
-                          }),
+                  headingRowColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.pressed)) {
+                      return Colors.grey; // Cor quando pressionado
+                    }
+                    return Colors.black; // Cor padrão
+                  }),
                   columns: const [
-                    DataColumn(label: Text('Pos', style:  TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('Time', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('Pts', style:  TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('J', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('V', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('E', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('D', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('GF', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('GS', style: TextStyle(color: Colors.white),)),
-                    DataColumn(label: Text('SG', style: TextStyle(color: Colors.white),)),
+                    DataColumn(
+                        label: Text(
+                      'Pos',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'Time',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'Pts',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'J',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'V',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'E',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'D',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'GF',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'GS',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                    DataColumn(
+                        label: Text(
+                      'SG',
+                      style: TextStyle(color: Colors.white),
+                    )),
                   ],
                   rows: List.generate(
                     table.teamsTable!.length,
@@ -70,18 +113,21 @@ class TablePage extends StatelessWidget {
                       }
 
                       return DataRow(
-                          color: WidgetStateProperty.resolveWith<Color?>(
-                              (Set states) {
-                            return rowColor;
+                          color: MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                            return rowColor; // Cor padrão
                           }),
                           cells: [
                             DataCell(
                               Container(
                                 width: double.infinity,
                                 color: Colors.black,
-                                padding: const EdgeInsets.only(left: 8, right: 1, top: 14, bottom: 10),
+                                padding: const EdgeInsets.only(
+                                    left: 8, right: 1, top: 14, bottom: 10),
                                 child: Text(
-                                    "${table.teamsTable![index].position}°", style: const TextStyle(color: Colors.white),),
+                                  "${table.teamsTable![index].position}°",
+                                  style: const TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
                             DataCell(Row(
