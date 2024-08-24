@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/logo_widget.dart';
 import 'package:get/get.dart';
 
 class TablePage extends StatelessWidget {
-  TablePage({super.key});
+  TablePage({
+    super.key,
+    this.favoriteTeamsId = const [],
+  });
+
+  final List<int> favoriteTeamsId;
 
   final FutinfoController controller = Get.find();
 
@@ -105,7 +111,12 @@ class TablePage extends StatelessWidget {
                     table.teamsTable!.length,
                     (index) {
                       Color rowColor = Colors.transparent;
+                      Color cellColor = Colors.transparent;
 
+                      if (favoriteTeamsId
+                          .contains(table.teamsTable![index].team!.id)) {
+                        cellColor = Colors.yellow;
+                      }
                       if (index < 6) {
                         rowColor = Colors.blue.withOpacity(0.2);
                       } else if (index >= table.teamsTable!.length - 4) {
@@ -138,8 +149,15 @@ class TablePage extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10),
-                                  child:
-                                      Text(table.teamsTable![index].team!.tla!),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        color: cellColor,
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    child: Text(
+                                        table.teamsTable![index].team!.tla!),
+                                  ),
                                 )
                               ],
                             )),
