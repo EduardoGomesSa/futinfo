@@ -132,9 +132,13 @@ class TablePage extends StatelessWidget {
                             DataCell(
                               Container(
                                 width: double.infinity,
-                                color: Colors.black,
+                                
+                                decoration:  BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(80), 
+                                ),
                                 padding: const EdgeInsets.only(
-                                    left: 8, right: 1, top: 14, bottom: 10),
+                                    left: 10, right: 2, top: 10, bottom: 10),
                                 child: Text(
                                   "${table.teamsTable![index].position}°",
                                   style: const TextStyle(color: Colors.white),
