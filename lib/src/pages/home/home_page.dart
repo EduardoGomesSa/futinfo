@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
+import 'package:futinfo/src/controllers/theme_controller.dart';
 import 'package:futinfo/src/core/widgets/match_widget.dart';
 import 'package:futinfo/src/models/match_model.dart';
 import 'package:futinfo/src/models/round_model.dart';
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
   final FutinfoController controller = Get.find();
+  final ThemeController themeController = Get.find();
 
   List<MatchModel> getMatchesForRound(RoundModel round, {int? roundNumber}) {
     if (roundNumber != null) {
@@ -35,8 +37,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.round.competition != null ? controller.round.competition!.name! : "Campeonato Brasileiro Série A"),
+        title: Text(controller.round.competition != null
+            ? controller.round.competition!.name!
+            : "Campeonato Brasileiro Série A"),
         actions: [
+          Obx(
+            () => IconButton(
+                onPressed: () {
+                  themeController.toggleTheme();
+                },
+                icon: Icon(themeController.themeMode.value == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode)),
+          ),
           IconButton(
               onPressed: () {
                 Navigator.push(context,
@@ -93,10 +104,15 @@ class HomePage extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Center(
                                   child: Container(
-                                    margin: const EdgeInsets.only(left: 15, right: 15),
+                                    margin: const EdgeInsets.only(
+                                        left: 15, right: 15),
                                     child: Row(
                                       children: [
-                                        const Expanded(child: Divider(color: Colors.black38, thickness: 2,)),
+                                        const Expanded(
+                                            child: Divider(
+                                          color: Colors.black38,
+                                          thickness: 2,
+                                        )),
                                         Padding(
                                           padding: const EdgeInsets.all(8),
                                           child: Text(
@@ -106,7 +122,11 @@ class HomePage extends StatelessWidget {
                                                 fontWeight: FontWeight.normal),
                                           ),
                                         ),
-                                        const Expanded(child: Divider(color: Colors.black38, thickness: 2,)),
+                                        const Expanded(
+                                            child: Divider(
+                                          color: Colors.black38,
+                                          thickness: 2,
+                                        )),
                                       ],
                                     ),
                                   ),
