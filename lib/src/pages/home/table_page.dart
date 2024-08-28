@@ -112,10 +112,14 @@ class TablePage extends StatelessWidget {
                     (index) {
                       Color rowColor = Colors.transparent;
                       Color cellColor = Colors.transparent;
+                      Color favoriteTextColor = Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
 
                       if (favoriteTeamsId
                           .contains(table.teamsTable![index].team!.id)) {
                         cellColor = Colors.yellow;
+                        if (Theme.of(context).brightness == Brightness.dark) {
+                          favoriteTextColor = Colors.black;
+                        }
                       }
                       if (index < 6) {
                         rowColor = Colors.blue.withOpacity(0.2);
@@ -132,10 +136,9 @@ class TablePage extends StatelessWidget {
                             DataCell(
                               Container(
                                 width: double.infinity,
-                                
-                                decoration:  BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Colors.black,
-                                  borderRadius: BorderRadius.circular(80), 
+                                  borderRadius: BorderRadius.circular(80),
                                 ),
                                 padding: const EdgeInsets.only(
                                     left: 10, right: 2, top: 10, bottom: 10),
@@ -160,7 +163,10 @@ class TablePage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(15)),
                                     child: Text(
-                                        table.teamsTable![index].team!.tla!),
+                                      table.teamsTable![index].team!.tla!,
+                                      style:
+                                          TextStyle(color: favoriteTextColor),
+                                    ),
                                   ),
                                 )
                               ],

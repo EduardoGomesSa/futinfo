@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey.shade800,
-          ),     
+          )    
         ),
         debugShowCheckedModeBanner: false,
         initialBinding: FutinfoBinding(),
