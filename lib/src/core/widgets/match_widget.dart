@@ -28,6 +28,9 @@ class MatchWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
         child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16)
+          ),
           color: Colors.white.withAlpha(100),
           child: Container(
             margin:
