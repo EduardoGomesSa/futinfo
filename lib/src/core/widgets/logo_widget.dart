@@ -24,6 +24,7 @@ class LogoWidget extends StatelessWidget {
       child: CircleAvatar(
         backgroundImage: NetworkImage(model.crest!),
         radius: size,
+        backgroundColor: Colors.transparent,
       ),
     );
   }
