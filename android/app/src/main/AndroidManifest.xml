@@ -1,8 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="eduardo.sa.com.futinfo">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
-        android:label="futinfo"
+        android:label="Futinfo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

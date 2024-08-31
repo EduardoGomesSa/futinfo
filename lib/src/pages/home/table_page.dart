@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:futinfo/src/controllers/futinfo_controller.dart';
 import 'package:futinfo/src/core/widgets/logo_widget.dart';
 import 'package:get/get.dart';
@@ -51,9 +50,9 @@ class TablePage extends StatelessWidget {
                   headingRowColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                     if (states.contains(MaterialState.pressed)) {
-                      return Colors.grey; // Cor quando pressionado
+                      return Colors.grey;
                     }
-                    return Colors.black; // Cor padrão
+                    return Colors.black;
                   }),
                   columns: const [
                     DataColumn(
