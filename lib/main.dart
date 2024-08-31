@@ -27,15 +27,15 @@ class MyApp extends StatelessWidget {
           appBarTheme: AppBarTheme(backgroundColor: Colors.blue.shade400),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: Colors.blue,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withAlpha(870),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white.withAlpha(870),
           )
         ),
         themeMode: themeController.themeMode.value,
         darkTheme: ThemeData.dark().copyWith(
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey.shade800,
+            unselectedItemColor: Colors.grey.shade800,
           )    
         ),
         debugShowCheckedModeBanner: false,
