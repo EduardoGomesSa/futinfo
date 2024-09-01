@@ -37,7 +37,6 @@ class FavoriteController extends GetxController {
       if (saved != 0) {
         model.setIsFavorite(true);
         teams.add(model);
-        print("time adicionado $saved");
       } else {
         appUtils.showToast(
             message: "Não foi possível favoritar este time. Tente novamente!",
@@ -49,7 +48,6 @@ class FavoriteController extends GetxController {
       if (removed != 0) {
         model.setIsFavorite(false);
         teams.remove(model);
-        print("time removido $removed");
       } else {
         appUtils.showToast(
             message:

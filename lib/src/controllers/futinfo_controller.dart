@@ -3,6 +3,7 @@ import 'package:futinfo/src/core/utils/api_result.dart';
 import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/models/round_model.dart';
 import 'package:futinfo/src/models/table_model.dart';
+import 'package:futinfo/src/models/table_scorer_model.dart';
 import 'package:futinfo/src/models/team_model.dart';
 import 'package:futinfo/src/repositories/futinfo_repository.dart';
 import 'package:get/get.dart';
@@ -26,6 +27,7 @@ class FutinfoController extends GetxController {
   RxBool isLoading = false.obs;
   RoundModel round = RoundModel();
   var table = Rx<TableModel?>(null);
+  var tableScorers = Rx<TableScorerModel?>(null);
   Rxn<int> selectedRound = Rxn<int>();
   TeamModel team = TeamModel();
   var showMatches = true.obs;
@@ -62,6 +64,20 @@ class FutinfoController extends GetxController {
 
     if (!result.isError) {
       table.value = result.data!;
+    } else {
+      appUtils.showToast(message: result.message!, isError: true);
+    }
+
+    isLoading.value = false;
+  }
+
+  getTableScorers() async {
+    isLoading.value = true;
+
+    ApiResult<TableScorerModel> result = await repository.getTableScores();
+
+    if (!result.isError) {
+      tableScorers.value = result.data;
     } else {
       appUtils.showToast(message: result.message!, isError: true);
     }

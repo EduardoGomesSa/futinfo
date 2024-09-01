@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:futinfo/src/core/services/http_manager.dart';
 import 'package:futinfo/src/core/utils/api_result.dart';
@@ -5,6 +7,7 @@ import 'package:futinfo/src/core/utils/app_utils.dart';
 import 'package:futinfo/src/core/utils/urls.dart';
 import 'package:futinfo/src/models/round_model.dart';
 import 'package:futinfo/src/models/table_model.dart';
+import 'package:futinfo/src/models/table_scorer_model.dart';
 import 'package:futinfo/src/models/team_model.dart';
 
 class FutinfoRepository {
@@ -63,6 +66,29 @@ class FutinfoRepository {
     }
   }
 
+  Future<ApiResult<TableScorerModel>> getTableScores() async {
+    String? apiToken = dotenv.env['API_TOKEN'];
+    const String endpoint = Url.scores;
+    final response = await httpManager.request(
+      url: endpoint,
+      method: HttpMethods.get,
+      headers: {
+        'X-Auth-Token': apiToken,
+      },
+    );
+
+    if (response['scorers'] != null) {
+      var table = TableScorerModel.fromMap(response['scorers'][0]);
+
+      return ApiResult<TableScorerModel>(data: table);
+    } else {
+      return ApiResult<TableScorerModel>(
+        message: "Erro ao buscar artilheiros da competição. Tente novamente",
+        isError: true,
+      );
+    }
+  }
+
   Future<ApiResult<TeamModel>> getTeamGames(
       TeamModel team, String startDate, String endDate) async {
     String? apiToken = dotenv.env['API_TOKEN'];
@@ -98,7 +124,6 @@ class FutinfoRepository {
 
     if (response['squad'] != null) {
       var teamWithPlayers = team.fromListPlayers(convertMap(response));
-      print(teamWithPlayers);
 
       return ApiResult<TeamModel>(data: teamWithPlayers);
     } else {
@@ -128,8 +153,6 @@ class FutinfoRepository {
         listTeams.add(team);
       }
     }
-
-    print("Quanrtidade de teams retornados ${listTeams.length}");
 
     if (listTeams.isNotEmpty) {
       return ApiResult<List<TeamModel>>(data: listTeams);
