@@ -20,7 +20,12 @@ class ScorerModel {
 
   factory ScorerModel.fromMap(Map<String, dynamic> map) {
     return ScorerModel(
-      
+      player: map['player'] != null ? PlayerModel.fromMap(map['player']  as Map<String, dynamic>) : null,
+      team: map['team'] != null ? TeamModel.fromMap(map['team'] as Map<String, dynamic>) : null,
+      playedMatches: map['playedMatches'] != null ? map['playedMatches'] as int : null,
+      goals: map['goals'] != null ? map['goals'] as int : null,
+      assists: map['assists'] != null ? map['assists'] as int : null,
+      penalties: map['penalties'] != null ? map['penalties'] as int : null,
     );
   }
 }
