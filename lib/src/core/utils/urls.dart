@@ -7,4 +7,6 @@ abstract class Url {
   static const teamMatches = "http://api.football-data.org/v4/teams";
   static const teamPlayers = "http://api.football-data.org/v4/teams/";
   static const team = "http://api.football-data.org/v4/teams";
+  static const scores =
+      "http://api.football-data.org/v4/competitions/BSA/scorers";
 }

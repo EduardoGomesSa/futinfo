@@ -1,7 +1,7 @@
 import 'package:futinfo/src/models/player_model.dart';
 import 'package:futinfo/src/models/team_model.dart';
 
-class ScorerModel {
+class Scorer {
   PlayerModel? player;
   TeamModel? team;
   int? playedMatches;
@@ -9,7 +9,7 @@ class ScorerModel {
   int? assists;
   int? penalties;
 
-  ScorerModel({
+  Scorer({
     this.player,
     this.team,
     this.playedMatches,
@@ -18,8 +18,8 @@ class ScorerModel {
     this.penalties,
   });
 
-  factory ScorerModel.fromMap(Map<String, dynamic> map) {
-    return ScorerModel(
+  factory Scorer.fromMap(Map<String, dynamic> map) {
+    return Scorer(
       player: map['player'] != null ? PlayerModel.fromMap(map['player']  as Map<String, dynamic>) : null,
       team: map['team'] != null ? TeamModel.fromMap(map['team'] as Map<String, dynamic>) : null,
       playedMatches: map['playedMatches'] != null ? map['playedMatches'] as int : null,
