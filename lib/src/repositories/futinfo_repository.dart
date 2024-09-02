@@ -78,7 +78,7 @@ class FutinfoRepository {
     );
 
     if (response['scorers'] != null) {
-      var table = TableScorerModel.fromMap(response['scorers'][0]);
+      var table = TableScorerModel.fromMap(convertMap(response));
 
       return ApiResult<TableScorerModel>(data: table);
     } else {

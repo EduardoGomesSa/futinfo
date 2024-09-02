@@ -10,7 +10,7 @@ class TableScorerModel {
         scorers: map['scorers'] != null
             ? List<Scorer>.from((map['scorers'] as List<dynamic>).map<Scorer?>(
                 (scorer) =>
-                    Scorer.fromMap(map['scorers'] as Map<String, dynamic>)))
+                    Scorer.fromMap(scorer as Map<String, dynamic>)))
             : null);
   }
 }

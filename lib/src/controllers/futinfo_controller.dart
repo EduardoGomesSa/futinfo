@@ -31,6 +31,7 @@ class FutinfoController extends GetxController {
   Rxn<int> selectedRound = Rxn<int>();
   TeamModel team = TeamModel();
   var showMatches = true.obs;
+  var showtableLeague = true.obs;
 
   var startDate = ''.obs;
   var lastDate = ''.obs;
@@ -148,5 +149,9 @@ class FutinfoController extends GetxController {
 
   void toggleView() {
     showMatches.value = !showMatches.value;
+  }
+
+  void toggleViewTable() {
+    showtableLeague.value = !showtableLeague.value;
   }
 }
