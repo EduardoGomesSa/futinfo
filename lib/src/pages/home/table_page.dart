@@ -249,12 +249,12 @@ class TablePage extends StatelessWidget {
         )),
         DataColumn(
             label: Text(
-          'Assists',
+          'Assis',
           style: TextStyle(color: Colors.white),
         )),
         DataColumn(
             label: Text(
-          'Gols pênalti',
+          'Pênalti',
           style: TextStyle(color: Colors.white),
         )),
         DataColumn(

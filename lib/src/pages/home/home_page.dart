@@ -37,16 +37,43 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.round.competition != null
-            ? controller.round.competition!.name!
-            : "Campeonato Brasileiro Série A"),
+        title: GestureDetector(
+          onTap: () => showDialog(
+            context: context,
+            builder: (BuildContext context) => Stack(
+              children: [
+                Positioned(
+                  top: kToolbarHeight + 10,
+                  left: 0,
+                  right: 0,
+                  child: Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(controller.round.competition != null
+                    ? controller.round.competition!.name!
+                    : "Campeonato Brasileiro Série A"),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          child: Text(controller.round.competition != null
+              ? controller.round.competition!.name!
+              : "Campeonato Brasileiro Série A"),
+        ),
         actions: [
           Obx(
             () => IconButton(
                 onPressed: () {
                   themeController.toggleTheme();
                 },
-                icon: Icon(themeController.themeMode.value == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode)),
+                icon: Icon(themeController.themeMode.value == ThemeMode.dark
+                    ? Icons.light_mode
+                    : Icons.dark_mode)),
           ),
           IconButton(
               onPressed: () {
