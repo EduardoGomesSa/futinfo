@@ -17,3 +17,5 @@ Após o clone do repositório, instala as dependências executando o comando:
 ```bash
   flutter pub get
 ```
+
+Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
