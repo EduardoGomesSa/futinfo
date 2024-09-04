@@ -18,4 +18,8 @@ Após o clone do repositório, instala as dependências executando o comando:
   flutter pub get
 ```
 
+Se registre no site abaixo para ter acesso ao token da API
+```bash
+  https://www.football-data.org/client/register
+```
 Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
