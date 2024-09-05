@@ -11,6 +11,7 @@ Este projeto foi desenvolvido para estudos e aprodundamento no framework Flutter
 - SQLite
 - MVC
 - GetX
+- Dio
 
 ## Intalação
 Após o clone do repositório, instala as dependências executando o comando:
