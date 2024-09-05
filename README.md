@@ -24,3 +24,5 @@ Se registre no site abaixo para ter acesso ao token da API
   https://www.football-data.org/client/register
 ```
 Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
+
+## Telas do aplicativo
