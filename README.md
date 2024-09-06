@@ -26,3 +26,9 @@ Se registre no site abaixo para ter acesso ao token da API
 Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
 
 ## Telas do aplicativo
+
+### Tela principal
+  - Responsável por exibir os jogos do campeonado brasileiro série A.
+  - Botão para visualizar a tabela do campeonado.
+  - Select para exibir os jogos de uma rodada especifíca.
+  - Definição do modo claro ou escuro 
