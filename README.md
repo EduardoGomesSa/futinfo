@@ -51,5 +51,12 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
 
 </div>
 
+### tela da Tabela
+  - Mostra a classificação atual do campeonato.
+  - Destaca os times que estão se classificando para a próxima copa Libertadores da América.
+  - Destaca os times que estão na zona de rebaixamento para a série B do próximo ano.
+<div style="display: flex; justify-content: flex-start; gap: 10px;">
 
+  <img src="https://github.com/user-attachments/assets/5864613d-4349-4f01-a599-bd4e036fa956" alt="home_app" width="250"/>
 
+</div>
