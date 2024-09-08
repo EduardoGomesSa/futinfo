@@ -1,6 +1,14 @@
 # futinfo
 
-Este projeto foi desenvolvido para estudos e aprodundamento no framework Flutter, como também, para uso pessoal, como uma aficcionado por futebol, principalmente o nacional, decide unir ambos neste aplicativo.
+<p>
+  A ideia para desenvolver esse projeto veio de um desejo pessoal, voltar a acompanhar o futebol nacional com mais afinco, algo que tinha parado desde o ensino médio e gostava tanto. 
+  Para o aplicativo, tinha como objetivo criar algo simples, de fácil adaptação por parte dos usuários e com boa usabilidade, realizando testes com usuários reais e colhendo feedbacks para possível alterações e melhorias. 
+  Assim cheguei na versão 1.
+</p>
+<p>
+  Nesse projeto, pude unir duas áreas que gosto bastante, a tecnólogia e o futebol. Na escolha das tecnólogias para criar o aplicativo, optei pelas que tenho mais familiaridade e algumas que tinha curiosidade. Foram elas
+  o Flutter, como framework mobile, o GetX para gerenciar o estado dos widgets, o Dio para realizar as requisições a API, o padrão MVC para organização do projeto e o SQLite, única das tecnologias citadas que eu não tinha experiência e fiquei bastante empolgado em conhecer.
+</p>
 
 ## Funcionalidades:
 - Ver informações dos jogos atuais do campeonato brasileiro série A.
