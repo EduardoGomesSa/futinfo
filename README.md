@@ -68,5 +68,18 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
 </p>
 
 ### Time
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/471800e9-0803-4be9-a186-948ddb10087a" alt="home_app" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/03e6372e-464e-4d52-9b3a-7fe0a0b63543" alt="modo_escuro_app" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+</p>
+
 
 ### Detalhes do jogo
+
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/8d6a6b4f-5eb1-4e54-ac13-5b884f08d483" alt="home_app" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+</p>
+
