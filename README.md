@@ -3,8 +3,17 @@
 Este projeto foi desenvolvido para estudos e aprodundamento no framework Flutter, como também, para uso pessoal, como uma aficcionado por futebol, principalmente o nacional, decide unir ambos neste aplicativo.
 
 ## Funcionalidades:
-- Cadastro e loginde usuário
-- Aba de favoritos
+- Ver informações dos jogos atuais do campeonato brasileiro série A.
+- Ver informações de jogos de rodadas especifícas do campeonato brasileiro série A.
+- Ver a tabela atualizada do campeonato brasileiro série A.
+- Ver o ranking de artilheiros do campeonato brasileiro série A.
+- Ver informações de um jogo específico do campeonato brasileiro série A
+- Ver informações sobre jogos de um time específico do campeonato brasileiro série A
+- Ver o elenco de um time especifíco do campeonato brasileiro série A.
+- Favoritar um time para ter acesso mais rápido a ele.
+- Alternar entre o modo claro e escuro do app
+- Ver todos os seus times favoritos do campeonato brasileiro série A
+- Ver a tabela do campeonato brasileiro série A, destacando seus times favoritos
 
 ## Tecnologias utilizadads:
 - Flutter
@@ -13,7 +22,7 @@ Este projeto foi desenvolvido para estudos e aprodundamento no framework Flutter
 - GetX
 - Dio
 
-## Intalação
+## Instalação
 Após o clone do repositório, instala as dependências executando o comando:
 ```bash
   flutter pub get
@@ -85,3 +94,5 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
   &nbsp;&nbsp;&nbsp;
 </p>
 
+##
+<center>🚧 Em construção 🚧</center>
