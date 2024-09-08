@@ -16,11 +16,11 @@ Este projeto foi desenvolvido para estudos e aprodundamento no framework Flutter
 - Ver a tabela do campeonato brasileiro série A, destacando seus times favoritos
 
 ## Tecnologias utilizadads:
-- Flutter
-- SQLite
-- MVC
-- GetX
-- Dio
+- `Flutter`: Framework multiplataforma desenvolvido pela Google e que utiliza a linguagem Dart.
+- `SQLite`: Banco de dados leve, utilizado para gerenciar o favoritos.
+- `MVC`: Padrão de arquitetura de software que separa o projeto em três partes principais, model, view e controller. 
+- `GetX`: Gerenciador de estados popular no Flutter.
+- `Dio`: Responsavél por realizar as requisições a API.
 
 ## Instalação
 Após o clone do repositório, instala as dependências executando o comando:
@@ -47,6 +47,7 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
   - Botão para visualizar a tabela do campeonado.
   - Select para exibir os jogos de uma rodada especifíca.
   - Definição do modo claro ou escuro.
+    
 <p align="left">
   <img src="https://github.com/user-attachments/assets/ef253e00-96c0-410e-875a-0eef29ce6ea3" alt="home_app" width="250"/>
   &nbsp;&nbsp;&nbsp;
@@ -79,6 +80,11 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
 </p>
 
 ### Time
+- Mostra os jogos do time em um intervalo de tempo (de um mês antes a um mês depois da data atual).
+- Usuário pode definir o tempo de busca dos jogos.
+- Botão para ver o elenco do time.
+- Botão para favoritar e desfavoritar o time.
+  
 <p align="left">
   <img src="https://github.com/user-attachments/assets/471800e9-0803-4be9-a186-948ddb10087a" alt="home_app" width="250"/>
   &nbsp;&nbsp;&nbsp;
@@ -88,11 +94,13 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
 
 
 ### Detalhes do jogo
-
+- Mostra o resultado final da partida.
+- Mostra os resultados parciais do primeiro e segundo tempo.
+  
 <p align="left">
   <img src="https://github.com/user-attachments/assets/8d6a6b4f-5eb1-4e54-ac13-5b884f08d483" alt="home_app" width="250"/>
   &nbsp;&nbsp;&nbsp;
 </p>
 
 ##
-<center>🚧 Em construção 🚧</center>
+<p align="center">🚧 Em construção 🚧</p>
