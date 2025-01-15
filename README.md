@@ -110,5 +110,10 @@ Crie um arquivo .env na pasta assets, como no exemplo e cole seu token da api
   &nbsp;&nbsp;&nbsp;
 </p>
 
+### Funcionalidades futuras
+- Dados estatísticos sobre um time
+- Informações de jogadores
+- Novas ligas
+
 ##
 <p align="center">🚧 Em construção 🚧</p>
