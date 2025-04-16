@@ -178,7 +178,7 @@ class TablePage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 10, right: 2, top: 10, bottom: 10),
                     child: Text(
-                      "${table.teamsTable![index].position}°",
+                      "${index + 1}°",
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
