@@ -165,21 +165,27 @@ class TablePage extends StatelessWidget {
           return DataRow(
               color: MaterialStateProperty.resolveWith<Color>(
                   (Set<MaterialState> states) {
-                return rowColor; // Cor padrão
+                return rowColor;
               }),
               cells: [
                 DataCell(
                   Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
+                    width: 20,
+                    height: 20,
+                    decoration: const BoxDecoration(
                       color: Colors.black,
-                      borderRadius: BorderRadius.circular(80),
+                      shape: BoxShape.circle,
                     ),
-                    padding: const EdgeInsets.only(
-                        left: 10, right: 2, top: 10, bottom: 10),
-                    child: Text(
-                      "${index + 1}°",
-                      style: const TextStyle(color: Colors.white),
+                    child: Center(
+                      child: Text(
+                        "${index + 1}°",
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'RobotoMono'),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
