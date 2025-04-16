@@ -22,22 +22,20 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         title: 'FutInfos',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: false,
-          appBarTheme: AppBarTheme(backgroundColor: Colors.blue.shade400),
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            backgroundColor: Colors.blue,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white.withAlpha(870),
-          )
-        ),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            useMaterial3: false,
+            appBarTheme: AppBarTheme(backgroundColor: Colors.blue.shade400),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              backgroundColor: Colors.blue,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.white.withAlpha(870),
+            )),
         themeMode: themeController.themeMode.value,
         darkTheme: ThemeData.dark().copyWith(
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.grey.shade800,
-          )    
-        ),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey.shade800,
+        )),
         debugShowCheckedModeBanner: false,
         initialBinding: FutinfoBinding(),
         initialRoute: AppRoutes.base,
