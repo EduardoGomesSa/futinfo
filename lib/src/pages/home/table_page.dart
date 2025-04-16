@@ -25,7 +25,9 @@ class TablePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Obx(() => Text(controller.showtableLeague.value ? "Classificação da Série A" : "Artilheiros da Série A")),
+        title: Obx(() => Text(controller.showtableLeague.value
+            ? "Classificação da Série A"
+            : "Artilheiros da Série A")),
         actions: [
           Obx(() => IconButton(
                 onPressed: () {
@@ -37,35 +39,38 @@ class TablePage extends StatelessWidget {
               ))
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+      body: Center(
         child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: GetX<FutinfoController>(
-            init: controller,
-            builder: (controller) {
-              if (controller.isLoading.value) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                final table = controller.table.value;
-                final tableScorers = controller.tableScorers.value;
-
-                if (table == null ||
-                    table.teamsTable == null ||
-                    table.teamsTable!.isEmpty || tableScorers == null ||
-                    tableScorers.scorers == null ||
-                    tableScorers.scorers!.isEmpty) {
+          scrollDirection: Axis.horizontal,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: GetX<FutinfoController>(
+              init: controller,
+              builder: (controller) {
+                if (controller.isLoading.value) {
                   return const Center(
-                    child: Text("Tabela indisponível no momento"),
+                    child: CircularProgressIndicator(),
                   );
+                } else {
+                  final table = controller.table.value;
+                  final tableScorers = controller.tableScorers.value;
+
+                  if (table == null ||
+                      table.teamsTable == null ||
+                      table.teamsTable!.isEmpty ||
+                      tableScorers == null ||
+                      tableScorers.scorers == null ||
+                      tableScorers.scorers!.isEmpty) {
+                    return const Center(
+                      child: Text("Tabela indisponível no momento"),
+                    );
+                  }
+                  return controller.showtableLeague.value
+                      ? _buildTableLeague(table, columnLenght, context)
+                      : _buildTableScorers(tableScorers, columnLenght, context);
                 }
-                return controller.showtableLeague.value
-                    ? _buildTableLeague(table, columnLenght, context)
-                    : _buildTableScorers(tableScorers, columnLenght, context);
-              }
-            },
+              },
+            ),
           ),
         ),
       ),
@@ -294,7 +299,7 @@ class TablePage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 10, right: 2, top: 10, bottom: 10),
                     child: Text(
-                      "${index+1}°",
+                      "${index + 1}°",
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
